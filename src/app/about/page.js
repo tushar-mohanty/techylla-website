@@ -127,7 +127,7 @@ const AboutUs = () => {
 
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/About Us Img 2.png"
+                        src="/About-Us-Img-2.png"
                         className="w-full h-full object-cover"
                     />
 
