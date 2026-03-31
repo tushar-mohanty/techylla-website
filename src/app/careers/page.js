@@ -1,10 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import Image from "next/image";
 import React from "react";
 import { Manrope } from "next/font/google";
-import { BuildingOffice2Icon, BuildingOfficeIcon, ChartBarIcon, CodeBracketIcon, SparklesIcon } from "@heroicons/react/20/solid";
+import Script from "next/script";
 
 const manrope = Manrope({
     subsets: ["latin"],
@@ -14,97 +13,6 @@ const manrope = Manrope({
 
 const Careers = () => {
 
-    const [fileName, setFileName] = useState("No file chosen");
-
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        contact: "",
-        message: "",
-        resume: null,
-    });
-
-    const [errors, setErrors] = useState({});
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-
-        // ✅ REMOVE the error key completely
-        setErrors((prev) => {
-            const updated = { ...prev };
-            delete updated[name];
-            return updated;
-        });
-    };
-
-    const handleFileChange = (e) => {
-        if (e.target.files[0]) {
-            setFileName(e.target.files[0].name);
-
-            setFormData((prev) => ({
-                ...prev,
-                resume: e.target.files[0],
-            }));
-
-            setErrors((prev) => ({
-                ...prev,
-                resume: "",
-            }));
-        }
-    };
-
-    const validateForm = () => {
-        const newErrors = {};
-
-        if (!formData.firstName.trim()) newErrors.firstName = "Required";
-        if (!formData.lastName.trim()) newErrors.lastName = "Required";
-
-        if (!formData.email.trim()) {
-            newErrors.email = "Required";
-        } else {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(formData.email)) {
-                newErrors.email = "Invalid email";
-            }
-        }
-
-        if (!formData.contact.trim()) {
-            newErrors.contact = "Required";
-        }
-
-        if (!formData.message.trim()) newErrors.message = "Required";
-        if (!formData.resume) newErrors.resume = "Required";
-
-        return newErrors;
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        setIsSubmitted(true); // ✅ ADD THIS
-
-        console.log("SUBMIT CLICKED"); // 👈 ADD THIS
-
-        const validationErrors = validateForm();
-        console.log("Errors:", validationErrors); // 👈 ADD THIS
-
-        setErrors(validationErrors);
-
-        if (Object.keys(validationErrors).length > 0) {
-            alert("Validation failed"); // 👈 TEMPORARY
-            return;
-        }
-
-        console.log("Form Data:", formData);
-        alert("Form submitted 🚀");
-    };
-    const [isSubmitted, setIsSubmitted] = useState(false);
 
     return (
 
@@ -252,169 +160,34 @@ const Careers = () => {
                         </p>
                     </motion.div>
 
-                    {/* FORM */}
-                    <motion.form
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.7 }}
-                        viewport={{ once: true }}
-                        className="mt-14"
-                        onSubmit={handleSubmit}
-                    >
-                        <h3 className={`${manrope.className} text-2xl font-semibold mb-6`}>
+                    {/* RIGHT SIDE FORM */}
+                    <div className="relative mt-10 p-6 sm:p-8 rounded-xl shadow-lg bg-white overflow-hidden">
+
+                        <h3 className={`${manrope.className} text-2xl sm:text-3xl font-semibold mb-4`}>
                             Send us your details
                         </h3>
 
-                        {/* First Name */}
-                        <div>
-                            <label className={`${manrope.className} text-md font-medium text-slate-700`}>
-                                First Name <span className="text-orange-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Enter your first name"
-                                name="firstName"
-                                className={`${manrope.className} w-full mt-2 mb-5 border-b border-gray-300 focus:outline-none focus:border-blue-600  bg-transparent`}
-                                onChange={handleChange}
-                            />
-                            {errors.firstName && (
-                                <p className={`${manrope.className} text-red-500 text-xs -mt-4 mb-4`}>
-                                    Please fill out this field.
-                                </p>
-                            )}
+                        <Script
+                            src="https://js-na2.hsforms.net/forms/embed/245721089.js"
+                            strategy="afterInteractive"
+                        />
+
+                        {/* FORM WRAPPER */}
+                        <div className="form-wrapper">
+                            <div
+                                className="hs-form-frame"
+                                data-region="na2"
+                                data-form-id="d7e5b28d-ba9d-4975-8388-01c50f224187"
+                                data-portal-id="245721089"
+                            ></div>
                         </div>
 
-                        {/* Last Name */}
-                        <div>
-                            <label className={`${manrope.className} text-md font-medium text-slate-700`}>
-                                Last Name <span className="text-orange-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Enter your last name"
-                                name="lastName"
-                                className={`${manrope.className} w-full mt-2 mb-5 border-b border-gray-300 focus:outline-none focus:border-blue-600 bg-transparent`}
-                                onChange={handleChange}
-                            />
-                            {errors.lastName && (
-                                <p className={`${manrope.className} text-red-500 text-xs -mt-4 mb-4`}>
-                                    Please fill out this field.
-                                </p>
-                            )}
-                        </div>
+                        {/* RESPONSIVE MASK (SAFE) */}
+                        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-16 sm:h-20 bg-gradient-to-t from-blue-100 to-white"></div>
 
-                        {/* Email */}
-                        <div>
-                            <label className={`${manrope.className} text-md font-medium text-slate-700`}>
-                                Email <span className="text-orange-500">*</span>
-                            </label>
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                name="email"
-                                className={`${manrope.className} w-full mt-2 mb-5 border-b border-gray-300 focus:outline-none focus:border-blue-600 bg-transparent`}
-                                onChange={handleChange}
-                            />
-                            {errors.email && (
-                                <p className={`${manrope.className} text-red-500 text-xs -mt-4 mb-4`}>
-                                    {errors.email === "Invalid email"
-                                        ? "Please enter a valid email."
-                                        : "Please fill out this field."}
-                                </p>
-                            )}
-                        </div>
+                    </div>
 
-                        {/* Contact */}
-                        <div>
-                            <label className={`${manrope.className} text-md font-medium text-slate-700`}>
-                                Contact Number <span className="text-orange-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Enter your contact number"
-                                name="contact"
-                                className={`${manrope.className} w-full mt-2 mb-5 border-b border-gray-300 focus:outline-none focus:border-blue-600 bg-transparent`}
-                                onChange={handleChange}
-                            />
-                            {errors.contact && (
-                                <p className={`${manrope.className} text-red-500 text-xs -mt-4 mb-4`}>
-                                    Please fill out this field.
-                                </p>
-                            )}
-                        </div>
 
-                        {/* Message */}
-                        <div>
-                            <label className={`${manrope.className} text-md font-medium text-slate-700`}>
-                                Your Message <span className="text-orange-500">*</span>
-                            </label>
-                            <textarea
-                                placeholder="Your message"
-                                name="message"
-                                className={`${manrope.className} w-full mt-2 mb-5 border-b border-gray-300 focus:outline-none focus:border-blue-600 bg-transparent`}
-                                onChange={handleChange}
-                            />
-                            {errors.message && (
-                                <p className={`${manrope.className} text-red-500 text-xs -mt-4 mb-4`}>
-                                    Please fill out this field.
-                                </p>
-                            )}
-                        </div>
-
-                        {/* Resume Upload */}
-                        <div>
-                            <label className={`${manrope.className} text-md font-medium text-slate-700`}>
-                                Upload Resume <span className="text-orange-500">*</span>
-                            </label>
-
-                            {/* Hidden Input */}
-                            <input
-                                type="file"
-                                id="resume"
-                                className="hidden"
-                                onChange={handleFileChange}
-                            />
-
-                            {/* Custom UI */}
-                            <div className="flex justify-between items-center mt-2 border-b border-gray-300 py-2">
-                                <span className={`${manrope.className} text-gray-400 text-sm truncate`}>
-                                    {fileName}
-                                </span>
-
-                                <label
-                                    htmlFor="resume"
-                                    className={`${manrope.className} text-orange-500 font-medium text-sm cursor-pointer hover:underline`}
-                                >
-                                    Choose File →
-                                </label>
-                            </div>
-
-                            <p className={`${manrope.className} text-xs text-gray-400 mt-2`}>
-                                Upload only PDF files with a maximum size of 5MB.
-                            </p>
-                            {errors.resume && (
-                                <p className={`${manrope.className} text-red-500 text-xs`}>
-                                    Please upload your resume.
-                                </p>
-                            )}
-                        </div>
-
-                        {/* Submit */}
-                        <div className="flex items-center gap-4 mt-6 mb-4">
-                            <button
-                                type="submit"
-                                className={`${manrope.className} border border-orange-500 text-orange-500 px-6 py-2 rounded hover:bg-orange-500 hover:text-white transition cursor-pointer`}
-                            >
-                                Submit →
-                            </button>
-
-                            {isSubmitted && Object.keys(errors).length > 0 && (
-                                <p className={`${manrope.className} text-orange-700 text-sm border rounded border-orange-700 px-4 py-2`}>
-                                    One or more fields have an error. Please check and try again.
-                                </p>
-                            )}
-                        </div>
-                    </motion.form>
                 </div>
             </section>
         </>

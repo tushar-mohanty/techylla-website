@@ -28,7 +28,7 @@ const Partnerships = () => {
 
         {/* Heading */}
         <h2 className={`${manrope.className} text-6xl font-light tracking-normal leading-tight mb-4`}>
-          Partnerships
+          Core Competence
         </h2>
 
         <p className="text-[19px] text-black max-w-xl mb-10">

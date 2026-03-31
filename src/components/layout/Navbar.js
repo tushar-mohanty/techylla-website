@@ -34,8 +34,10 @@ import {
     Cog6ToothIcon,
     CpuChipIcon,
     CursorArrowRaysIcon,
+    DocumentChartBarIcon,
     EyeIcon,
     FingerPrintIcon,
+    FolderIcon,
     GlobeAltIcon,
     PresentationChartBarIcon,
     PresentationChartLineIcon,
@@ -49,22 +51,51 @@ import {
 } from '@heroicons/react/24/outline'
 import { ArrowRightCircleIcon, ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 
-const aiStrategy = [
-    { name: 'Agentic AI', description: 'Reshape Business with scalable agentic systems', href: '#', icon: SparklesIcon },
-    { name: 'Generative AI', description: 'Drive innovation with Generative AI', href: '#', icon: RocketLaunchIcon },
-    { name: 'AI Managed Services', description: 'Ensure reliable AI performance', href: '#', icon: UserGroupIcon },
+const knowledgeCenter = [
+    { name: 'Case Studies', description: 'Success stories that matter', href: '/case-studies', icon: DocumentChartBarIcon },
+    { name: 'Blogs', description: 'Stories, ideas, and insights', href: '#', icon: FolderIcon },
+    // { name: 'AI Managed Services', description: 'Ensure reliable AI performance', href: '#', icon: UserGroupIcon },
 ]
-const dataStrategy = [
-    { name: 'Data Engineering', description: 'Deliver insights faster with scalable pipelines', href: '#', icon: CpuChipIcon },
-    { name: 'Data Management', description: 'Leverage data as a strategic asset', href: '#', icon: CircleStackIcon },
-    { name: 'Data Ops', description: 'Automate data for speed and quality', href: '#', icon: PresentationChartBarIcon },
-    { name: 'Data Visualization', description: 'Transform data into actionable stories', href: '#', icon: PresentationChartLineIcon },
-]
-const businessTransformation = [
-    { name: 'Process Streamlining', description: 'Transform data into actionable stories', href: '#', icon: PresentationChartLineIcon },
-    { name: 'Process Orchestration', description: 'Structure data for better decisions', href: '#', icon: TableCellsIcon },
-    { name: 'Lean Enterprise Workflows', description: 'Build trust with healthy, accurate data', href: '#', icon: EyeIcon },
-]
+// const serviceSolution = [
+//     { name: 'Data & Cloud', description: 'Deliver insights faster with scalable pipelines', href: '#', icon: CpuChipIcon },
+//     { name: 'Business Transformation', description: 'Leverage data as a strategic asset', href: '#', icon: PresentationChartLineIcon },
+//     { name: 'Artificial Intelligence', description: 'Automate data for speed and quality', href: '#', icon: SparklesIcon },
+//     // { name: 'Data Visualization', description: 'Transform data into actionable stories', href: '#', icon: PresentationChartLineIcon },
+// ]
+const serviceSolution = [
+    {
+        name: 'Data & Cloud',
+        description: 'Data-driven cloud solutions',
+        href: '#',
+        icon: CpuChipIcon,
+        children: [
+            { name: 'Data Engineering', href: '#' },
+            { name: 'Data Management', href: '#' }
+        ]
+    },
+    {
+        name: 'Business Transformation',
+        description: 'Smarter, faster business processes',
+        href: '#',
+        icon: PresentationChartLineIcon,
+        children: [] // no submenu
+    },
+    {
+        name: 'Artificial Intelligence',
+        description: 'Advanced AI solutions',
+        href: '#',
+        icon: SparklesIcon,
+        children: [
+            { name: 'Generative AI', href: '#' },
+            { name: 'AI Managed Services', href: '#' }
+        ]
+    }
+];
+// const businessTransformation = [
+//     { name: 'Process Streamlining', description: 'Transform data into actionable stories', href: '#', icon: PresentationChartLineIcon },
+//     { name: 'Process Orchestration', description: 'Structure data for better decisions', href: '#', icon: TableCellsIcon },
+//     { name: 'Lean Enterprise Workflows', description: 'Build trust with healthy, accurate data', href: '#', icon: EyeIcon },
+// ]
 const industry = [
     { name: 'Healthcare & LifeSciences', description: 'Transforming care through technology', href: '#', icon: ClipboardDocumentCheckIcon },
     { name: 'Supply Chain & Logistics', description: 'Seamless global supply chain solutions', href: '#', icon: GlobeAltIcon },
@@ -74,6 +105,7 @@ const industry = [
 
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [activeSubMenu, setActiveSubMenu] = useState(null);
     const [openMenu, setOpenMenu] = useState(null)
     const pathname = usePathname();
     const isHome = pathname === "/";
@@ -111,13 +143,13 @@ export default function Navbar() {
                 }`}>
                 <div className="flex ">
                     <a href="/" className="text-3xl font-semibold text-white ml-40">
-                        
 
-                        <img 
-              alt=""
-              src="/Techylla Logo.png"
-              className="h-12 w-auto"
-            />
+
+                        <img
+                            alt=""
+                            src="/Techylla-Logo.png"
+                            className="h-11 w-auto"
+                        />
                     </a>
                 </div>
                 <div className="flex lg:hidden">
@@ -133,14 +165,14 @@ export default function Navbar() {
                 <PopoverGroup className="hidden lg:flex ml-auto items-center gap-6 text-gray-600 font-medium text-xl">
                     <Popover
                         className="relative group"
-                        onMouseEnter={() => setOpenMenu("data")}
+                        onMouseEnter={() => setOpenMenu("service")}
                         onMouseLeave={() => setOpenMenu(null)}
                     >
                         <div className="absolute top-full left-0 right-0 h-6 bg-transparent"></div>
                         <PopoverButton className={`${manrope.className} relative flex items-center gap-x-1 text-[18px] font-normal text-white transition w-full cursor-pointer focus:outline-none`}>
-                            Data & Cloud
+                            Services & Solutions
                             <ChevronDownIcon
-                                className={`size-5 text-white transition-transform duration-200 group-hover:text-blue-600 ${openMenu === "data" ? "rotate-180" : ""
+                                className={`size-5 text-white transition-transform duration-200 group-hover:text-blue-600 ${openMenu === "service" ? "rotate-180" : ""
                                     }`}
                             />
                             <span
@@ -148,7 +180,7 @@ export default function Navbar() {
                             />
                         </PopoverButton>
                         <AnimatePresence>
-                            {openMenu === "data" && (
+                            {openMenu === "service" && (
                                 <PopoverPanel
                                     static
                                     as={motion.div}
@@ -157,13 +189,15 @@ export default function Navbar() {
                                     exit={{ opacity: 0, y: 15 }}
 
                                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                    className="absolute left-1/2 z-10 mt-5 w-screen max-w-xl -translate-x-1/2 rounded-3xl bg-white shadow-lg"
+                                    className="absolute left-1/2 z-10 mt-5 w-screen max-w-lg -translate-x-1/2 rounded-3xl bg-white shadow-lg"
                                 >
                                     <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
                                     <div className="p-4">
-                                        {dataStrategy.map((item) => (
+                                        {serviceSolution.map((item) => (
                                             <div
                                                 key={item.name}
+                                                onMouseEnter={() => setActiveSubMenu(item.name)}
+                                                onMouseLeave={() => setActiveSubMenu(null)}
                                                 className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/5 hover:bg-blue-50"
                                             >
                                                 <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
@@ -177,6 +211,26 @@ export default function Navbar() {
                                                     <p className="mt-1 text-gray-600">{item.description}</p>
                                                 </div>
                                                 <ArrowRightIcon className="size-6 text-blue-400" />
+
+                                                {/* invisible hover bridge */}
+                                                <div className="absolute top-0 left-full w-4 h-full"></div>
+
+                                                {/* 🔥 ADD THIS HERE (INSIDE SAME DIV, AT END) */}
+                                                {item.children.length > 0 && activeSubMenu === item.name && (
+                                                    <div className={`${manrope.className} text-lg text-black absolute top-0 left-full ml-4 w-88 bg-white rounded-xl shadow-lg border z-50`}>
+                                                        <div className="p-3">
+                                                            {item.children.map((subItem) => (
+                                                                <a
+                                                                    key={subItem.name}
+                                                                    href={subItem.href}
+                                                                    className="block px-3 py-2 hover:bg-blue-50 rounded cursor-pointer"
+                                                                >
+                                                                    {subItem.name}
+                                                                </a>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                )}
                                             </div>
                                         ))}
                                     </div>
@@ -186,7 +240,7 @@ export default function Navbar() {
                         </AnimatePresence>
                     </Popover>
 
-                    <Popover
+                    {/* <Popover
                         className="relative group"
                         onMouseEnter={() => setOpenMenu("business")}
                         onMouseLeave={() => setOpenMenu(null)}
@@ -241,18 +295,18 @@ export default function Navbar() {
                                 </PopoverPanel>
                             )}
                         </AnimatePresence>
-                    </Popover>
+                    </Popover> */}
 
                     <Popover
                         className="relative group"
-                        onMouseEnter={() => setOpenMenu("ai")}
+                        onMouseEnter={() => setOpenMenu("knowledge")}
                         onMouseLeave={() => setOpenMenu(null)}
                     >
                         <div className="absolute top-full left-0 right-0 h-6 bg-transparent"></div>
                         <PopoverButton className={`${manrope.className} relative flex items-center gap-x-1 text-[18px] font-normal text-white transition w-full cursor-pointer focus:outline-none`}>
-                            Artificial Intelligence
+                            Knowledge Center
                             <ChevronDownIcon
-                                className={`size-5 text-white transition-transform duration-200 group-hover:text-blue-600 ${openMenu === "ai" ? "rotate-180" : ""
+                                className={`size-5 text-white transition-transform duration-200 group-hover:text-blue-600 ${openMenu === "knowledge" ? "rotate-180" : ""
                                     }`}
                             />
                             <span
@@ -260,7 +314,7 @@ export default function Navbar() {
                             />
                         </PopoverButton>
                         <AnimatePresence>
-                            {openMenu === "ai" && (
+                            {openMenu === "knowledge" && (
                                 <PopoverPanel
 
                                     static
@@ -270,11 +324,11 @@ export default function Navbar() {
                                     exit={{ opacity: 0, y: 15 }}
 
                                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                    className="absolute left-1/2 z-10 mt-5 w-screen max-w-xl -translate-x-1/2 rounded-3xl bg-white shadow-lg"
+                                    className="absolute left-1/2 z-10 mt-5 w-screen max-w-lg -translate-x-1/2 rounded-3xl bg-white shadow-lg"
                                 >
                                     <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
                                     <div className="p-4">
-                                        {aiStrategy.map((item) => (
+                                        {knowledgeCenter.map((item) => (
                                             <div
                                                 key={item.name}
                                                 className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/5 hover:bg-blue-50"
@@ -289,7 +343,7 @@ export default function Navbar() {
                                                     </a>
                                                     <p className="mt-1 text-gray-600">{item.description}</p>
                                                 </div>
-                                                <ArrowRightIcon className="size-6 text-blue-400" />
+                                                {/* <ArrowRightIcon className="size-6 text-blue-400" /> */}
                                             </div>
                                         ))}
                                     </div>
@@ -325,7 +379,7 @@ export default function Navbar() {
                                     exit={{ opacity: 0, y: 15 }}
 
                                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                    className="absolute left-1/2 z-10 mt-5 w-screen max-w-xl -translate-x-1/2 rounded-3xl bg-white shadow-lg"
+                                    className="absolute left-1/2 z-10 mt-5 w-screen max-w-lg -translate-x-1/2 rounded-3xl bg-white shadow-lg"
                                 >
                                     <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
                                     <div className="p-4">
@@ -344,7 +398,7 @@ export default function Navbar() {
                                                     </a>
                                                     <p className="mt-1 text-gray-600">{item.description}</p>
                                                 </div>
-                                                <ArrowRightIcon className="size-6 text-blue-400" />
+                                                {/* <ArrowRightIcon className="size-6 text-blue-400" /> */}
                                             </div>
                                         ))}
                                     </div>
@@ -412,24 +466,53 @@ export default function Navbar() {
                             <div className="space-y-2 py-6">
                                 <Disclosure as="div" className="-mx-3">
                                     <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
-                                        Data & Cloud
+                                        Services & Solutions
                                         <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
                                     </DisclosureButton>
                                     <DisclosurePanel className="mt-2 space-y-2">
-                                        {[...dataStrategy,].map((item) => (
-                                            <DisclosureButton
-                                                key={item.name}
-                                                as="a"
-                                                href={item.href}
-                                                className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
-                                            >
-                                                {item.name}
-                                            </DisclosureButton>
+                                        {[...serviceSolution,].map((item) => (
+                                            <div key={item.name}>
+
+                                                {item.children.length > 0 ? (
+                                                    <Disclosure as="div" className="w-full">
+
+                                                        {/* MAIN ITEM */}
+                                                        <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3 pl-6 text-sm font-semibold text-gray-900 hover:bg-gray-50">
+                                                            {item.name}
+                                                            <ChevronDownIcon className="size-5 group-data-open:rotate-180" />
+                                                        </DisclosureButton>
+
+                                                        {/* SUBMENU */}
+                                                        <DisclosurePanel className="ml-4 space-y-1">
+                                                            {item.children.map((subItem) => (
+                                                                <DisclosureButton
+                                                                    key={subItem.name}
+                                                                    as="a"
+                                                                    href={subItem.href}
+                                                                    className="block rounded-lg py-2 pr-3 pl-6 text-sm text-gray-700 hover:bg-gray-50"
+                                                                >
+                                                                    {subItem.name}
+                                                                </DisclosureButton>
+                                                            ))}
+                                                        </DisclosurePanel>
+
+                                                    </Disclosure>
+                                                ) : (
+                                                    <DisclosureButton
+                                                        as="a"
+                                                        href={item.href}
+                                                        className="block w-full text-left rounded-lg py-2 pr-3 pl-6 text-sm font-semibold text-gray-900 hover:bg-gray-50"
+                                                    >
+                                                        {item.name}
+                                                    </DisclosureButton>
+                                                )}
+
+                                            </div>
                                         ))}
                                     </DisclosurePanel>
                                 </Disclosure>
 
-                                <Disclosure as="div" className="-mx-3">
+                                {/* <Disclosure as="div" className="-mx-3">
                                     <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
                                         Business Transformation
                                         <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
@@ -446,14 +529,14 @@ export default function Navbar() {
                                             </DisclosureButton>
                                         ))}
                                     </DisclosurePanel>
-                                </Disclosure>
+                                </Disclosure> */}
                                 <Disclosure as="div" className="-mx-3">
                                     <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
-                                        Artificial Intelligence
+                                        Knowledge Center
                                         <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
                                     </DisclosureButton>
                                     <DisclosurePanel className="mt-2 space-y-2">
-                                        {[...aiStrategy,].map((item) => (
+                                        {[...knowledgeCenter,].map((item) => (
                                             <DisclosureButton
                                                 key={item.name}
                                                 as="a"

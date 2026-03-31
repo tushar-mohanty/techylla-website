@@ -7,6 +7,8 @@ import { ArrowLeft, ArrowRight, Eye, LineChart } from "lucide-react";
 import { Manrope } from "next/font/google";
 import { BuildingOffice2Icon, BuildingOfficeIcon, ChartBarIcon, CodeBracketIcon, SparklesIcon } from "@heroicons/react/20/solid";
 import Circle from "@/components/Circle";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const manrope = Manrope({
     subsets: ["latin"],
@@ -28,6 +30,18 @@ const AboutUs = () => {
     });
 
     const [errors, setErrors] = useState({});
+
+    const [loading, setLoading] = useState(false);
+
+    const [toast, setToast] = useState(null);
+
+    const showToast = (type, message) => {
+        setToast({ type, message });
+
+        setTimeout(() => {
+            setToast(null);
+        }, 3000);
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -76,8 +90,12 @@ const AboutUs = () => {
             }
         }
 
-        if (!formData.contact.trim()) {
-            newErrors.contact = "Required";
+        // if (!formData.contact.trim()) {
+        //     newErrors.contact = "Required";
+        // }
+
+        if (!formData.contact || formData.contact.length < 10) {
+            newErrors.contact = "Enter a valid phone number";
         }
 
         if (!formData.organization.trim()) newErrors.organization = "Required";
@@ -86,43 +104,88 @@ const AboutUs = () => {
         return newErrors;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setIsSubmitted(true); // ✅ ADD THIS
-
-        console.log("SUBMIT CLICKED"); // 👈 ADD THIS
+        // setIsSubmitted(true);
 
         const validationErrors = validateForm();
-        console.log("Errors:", validationErrors); // 👈 ADD THIS
-
         setErrors(validationErrors);
 
         if (Object.keys(validationErrors).length > 0) {
-            alert("Validation failed"); // 👈 TEMPORARY
             return;
         }
 
-        // ✅ SUCCESS PART (ADD HERE)
-        console.log("Form Data:", formData);
+        setIsSubmitted(true); // ✅ MOVE HERE
 
-        alert("Form submitted 🚀");
+        setLoading(true);
 
-        // 🔥 RESET FORM HERE
-        setFormData({
-            firstName: "",
-            lastName: "",
-            email: "",
-            contact: "",
-            organization: "",
-            help: "",
-        });
+        try {
+
+
+
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    firstname: formData.firstName,
+                    lastname: formData.lastName,
+                    email: formData.email,
+                    phone: formData.contact,
+                    company: formData.organization,
+                    message: formData.help,
+                }),
+            });
+
+            if (!res.ok) {
+                throw new Error("Failed to submit");
+            }
+
+            const data = await res.json();
+
+            setLoading(false);  // 👈 ADD HERE
+
+            if (data.success) {
+                showToast("success", "Message sent successfully!");
+
+                setFormData({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    contact: "",
+                    organization: "",
+                    help: "",
+                });
+
+                // ✅ ADD THESE HERE
+                setErrors({});
+                setIsSubmitted(false);
+            } else {
+                showToast("error", "Something went wrong!");
+            }
+        } catch (error) {
+            // inside catch
+            setLoading(false);
+            console.error(error);
+            showToast("error", "Error sending message!");
+        }
     };
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     return (
 
         <>
+
+            {/* ✅ ADD TOAST HERE */}
+            {toast && (
+                <div
+                    className={`${manrope.className} fixed top-5 right-5 px-6 py-4 rounded-lg shadow-lg text-white z-50 transition-all duration-300 ${toast.type === "success" ? "bg-green-500" : ""} ${toast.type === "error" ? "bg-red-500" : ""} `}
+                >
+                    {toast.message}
+                </div>
+            )}
             <section className="relative bg-white py-20 min-h-screen overflow-hidden">
 
                 <div className="absolute inset-0 z-0">
@@ -234,7 +297,7 @@ const AboutUs = () => {
                         <Eye className="w-20 h-20 text-blue-900 mb-6 opacity-90" />
 
                         <h3 className={`${manrope.className} text-3xl font-semibold text-blue-900 mb-4`}>
-                            Techylla Vision
+                            Vision
                         </h3>
 
                         <p className={`${manrope.className} text-gray-600 leading-relaxed max-w-md`}>
@@ -252,7 +315,7 @@ const AboutUs = () => {
                         <LineChart className="w-20 h-20 text-blue-900 mb-6 opacity-90" />
 
                         <h3 className={`${manrope.className} text-3xl font-semibold text-blue-900 mb-4`}>
-                            Techylla Mission
+                            Mission
                         </h3>
 
                         <p className={`${manrope.className} text-gray-600 leading-relaxed max-w-md`}>
@@ -283,7 +346,7 @@ const AboutUs = () => {
 
                     <Circle
                         percentage={100}
-                        number="6+"
+                        number="4+"
                         label="INDUSTRIES SERVED"
                     />
 
@@ -295,7 +358,7 @@ const AboutUs = () => {
 
                     <Circle
                         percentage={100}
-                        number="25+"
+                        number="20+"
                         label="SATISFIED CLIENTS"
                     />
 
@@ -602,7 +665,7 @@ const AboutUs = () => {
                             />
                             {errors.firstName && (
                                 <p className={`${manrope.className} text-red-500 text-xs -mt-4 mb-4`}>
-                                    Please fill out this field.
+                                    {errors.firstName}
                                 </p>
                             )}
                         </div>
@@ -622,7 +685,7 @@ const AboutUs = () => {
                             />
                             {errors.lastName && (
                                 <p className={`${manrope.className} text-red-500 text-xs -mt-4 mb-4`}>
-                                    Please fill out this field.
+                                    {errors.lastName}
                                 </p>
                             )}
                         </div>
@@ -642,9 +705,7 @@ const AboutUs = () => {
                             />
                             {errors.email && (
                                 <p className={`${manrope.className} text-red-500 text-xs -mt-4 mb-4`}>
-                                    {errors.email === "Invalid email"
-                                        ? "Please enter a valid email."
-                                        : "Please fill out this field."}
+                                    {errors.email}
                                 </p>
                             )}
                         </div>
@@ -654,17 +715,27 @@ const AboutUs = () => {
                             <label className={`${manrope.className} text-md font-medium text-slate-700`}>
                                 Contact Number <span className="text-orange-500">*</span>
                             </label>
-                            <input
-                                type="text"
-                                placeholder="Enter your contact number"
-                                name="contact"
+                            <PhoneInput
+                                country={"in"}   // 👈 default (can be changed by user)
+                                enableSearch={true} // 👈 user can search country
                                 value={formData.contact}
-                                className={`${manrope.className} w-full mt-2 mb-5 border-b border-gray-300 focus:outline-none focus:border-blue-600 bg-transparent`}
-                                onChange={handleChange}
+                                onChange={(value) =>
+                                    setFormData((prev) => ({
+                                        ...prev,
+                                        contact: value,
+                                    }))
+                                }
+                                inputProps={{
+                                    name: "contact",
+                                    required: true,
+                                }}
+                                inputClass="!w-full !pl-14 !py-3 !border !border-gray-300 !rounded-lg !outline-none"
+                                buttonClass="!border !border-gray-300 !rounded-l-lg"
+                                containerClass="mt-2 mb-5"
                             />
                             {errors.contact && (
                                 <p className={`${manrope.className} text-red-500 text-xs -mt-4 mb-4`}>
-                                    Please fill out this field.
+                                    {errors.contact}
                                 </p>
                             )}
                         </div>
@@ -686,7 +757,7 @@ const AboutUs = () => {
 
                             {errors.organization && (
                                 <p className={`${manrope.className} text-red-500 text-xs -mt-4 mb-4`}>
-                                    Please fill out this field.
+                                    {errors.organization}
                                 </p>
                             )}
                         </div>
@@ -708,7 +779,7 @@ const AboutUs = () => {
 
                             {errors.help && (
                                 <p className={`${manrope.className} text-red-500 text-xs -mt-4 mb-4`}>
-                                    Please fill out this field.
+                                    {errors.help}
                                 </p>
                             )}
                         </div>
@@ -717,9 +788,17 @@ const AboutUs = () => {
                         <div className="flex items-center gap-4 mt-6 mb-4">
                             <button
                                 type="submit"
-                                className={`${manrope.className} border border-orange-500 text-orange-500 px-6 py-2 rounded hover:bg-orange-500 hover:text-white transition cursor-pointer`}
+                                disabled={loading}
+                                className={`${manrope.className} border border-orange-500 text-orange-500 px-6 py-2 rounded hover:bg-orange-500 hover:text-white transition cursor-pointer flex items-center gap-2`}
                             >
-                                Submit →
+                                {loading ? (
+                                    <>
+                                        <span className="w-4 h-4 border-2 border-orange-500 border-t-transparent rounded-full animate-spin"></span>
+                                        Sending...
+                                    </>
+                                ) : (
+                                    "Submit →"
+                                )}
                             </button>
 
                             {isSubmitted && Object.keys(errors).length > 0 && (

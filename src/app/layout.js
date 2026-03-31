@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Script from "next/script"; 
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,6 +31,13 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <Footer />
+
+        {/* ✅ HUBSPOT CHATBOT SCRIPT */}
+        <Script
+          id="hs-script-loader"
+          src="https://js.hs-scripts.com/245721089.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

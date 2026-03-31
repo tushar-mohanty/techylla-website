@@ -28,7 +28,7 @@ export default function Footer() {
 
                     <Link href="/">
                         <img
-                            src="/Techylla Logo.png"
+                            src="/Techylla-Logo.png"
                             alt="Techylla Logo"
                             className="w-70 -ml-3 mb-8 mt-30 cursor-pointer"
                         />
@@ -67,191 +67,90 @@ export default function Footer() {
 
                         {/* Data & Cloud */}
                         <div>
-                            <h3 className="text-xl text-orange-400 font-normal mb-4">Data & Cloud</h3>
+                            <h3 className="text-xl whitespace-nowrap text-orange-400 font-normal mb-4 -mt-0.5">Services & Solutions</h3>
 
                             <div className="space-y-4">
-                                <Link href="/gen-ai" className="text-l block font-normal text-white hover:text-orange-400 transition mt-10.5">
-                                    Data Engineering
+                                <Link href="/gen-ai" className="text-l block font-normal text-orange-300 hover:text-orange-400 transition mt-5">
+                                    Data & Cloud
                                 </Link>
 
                                 <div>
                                     <Link href="/data-ai" className="text-l font-normal block text-white mb-2 hover:text-orange-400 transition">
-                                        Data Management
+                                        Data Engineering
                                     </Link>
-                                    {/* <div className="space-y-1 pl-2 text-gray-300">
-                                    <Link href="/data-strategy" className="block hover:text-white">Data Strategy</Link>
-                                    <Link href="/ai-ml" className="block hover:text-white">AI & ML</Link>
-                                    <Link href="/data-engineering" className="block hover:text-white">Data Engineering</Link>
-                                    <Link href="/business-intelligence" className="block hover:text-white">
-                                        Business Intelligence and Reporting
-                                    </Link>
-                                </div> */}
+
                                 </div>
 
                                 <div>
                                     <Link href="/cloud-studio" className="text-l font-normal block text-white mb-2 hover:text-orange-400 transition">
-                                        Data Ops
+                                        Data Management
                                     </Link>
-                                    {/* <div className="space-y-1 pl-2 text-gray-300">
-                                    <Link href="/cloud-advisory" className="block hover:text-white">
-                                        Cloud Advisory & Consulting
-                                    </Link>
-                                    <Link href="/cloud-transformation" className="block hover:text-white">
-                                        Cloud Transformation Services
-                                    </Link>
-                                </div> */}
+
                                 </div>
 
-                                <div>
-                                    <Link href="/application-modernization" className="text-l font-normal block text-white mb-2 hover:text-orange-400 transition">
-                                        Data Visualization
-                                    </Link>
-                                    {/* <div className="space-y-1 pl-2 text-gray-300">
-                                    <Link href="/leap-framework" className="block hover:text-white">LEAP Framework</Link>
-                                    <Link href="/power-apps" className="block hover:text-white">Power Apps</Link>
-                                    <Link href="/power-automate" className="block hover:text-white">Power Automate</Link>
-                                </div> */}
-                                </div>
 
-                                {/* <div>
-                                <Link href="/product-engineering" className="block text-white mb-2 hover:text-orange-400 transition">
-                                    Product Engineering
+                                <Link href="/application-modernization" className="text-l font-normal block text-orange-300 mb-2 hover:text-orange-400 transition">
+                                    Business Transformation
                                 </Link>
-                                <div className="space-y-1 pl-2 text-gray-300">
-                                    <Link href="/design-thinking" className="block hover:text-white">
-                                        Design Thinking-Led Product Development
-                                    </Link>
-                                </div>
-                            </div> */}
+
+
                             </div>
                         </div>
 
                         {/* Business Transformation */}
-                        <div className="-ml-8">
-                            <h3 className="text-xl font-normal text-orange-400 mb-4">Business Transformation</h3>
+                        <div className="-ml-5">
+                            {/* <h3 className="text-xl font-normal text-orange-400 mb-4">Business Transformation</h3> */}
 
                             <div className="space-y-4">
-                                <Link href="/gen-ai" className="text-l font-normal block text-white hover:text-orange-400 transition">
-                                    Process Streamlining
-                                </Link>
+                                
 
-                                <div>
-                                    <Link href="/data-ai" className="text-l font-normal block text-white mb-2 hover:text-orange-400 transition">
-                                        Process Orchestration
-                                    </Link>
-                                    {/* <div className="space-y-1 pl-2 text-gray-300">
-                                    <Link href="/data-strategy" className="block hover:text-white">Data Strategy</Link>
-                                    <Link href="/ai-ml" className="block hover:text-white">AI & ML</Link>
-                                    <Link href="/data-engineering" className="block hover:text-white">Data Engineering</Link>
-                                    <Link href="/business-intelligence" className="block hover:text-white">
-                                        Business Intelligence and Reporting
-                                    </Link>
-                                </div> */}
-                                </div>
-
-                                <div>
-                                    <Link href="/cloud-studio" className="text-l font-normal block text-white mb-2 hover:text-orange-400 transition">
-                                        Lean Enterprise Workflows
-                                    </Link>
-                                    {/* <div className="space-y-1 pl-2 text-gray-300">
-                                    <Link href="/cloud-advisory" className="block hover:text-white">
-                                        Cloud Advisory & Consulting
-                                    </Link>
-                                    <Link href="/cloud-transformation" className="block hover:text-white">
-                                        Cloud Transformation Services
-                                    </Link>
-                                </div> */}
-                                </div>
-
-                                <div>
-                                    {/* <Link href="/application-modernization" className="block text-white mb-2 hover:text-orange-400 transition">
-                                    Data Visualization
-                                </Link> */}
-                                    {/* <div className="space-y-1 pl-2 text-gray-300">
-                                    <Link href="/leap-framework" className="block hover:text-white">LEAP Framework</Link>
-                                    <Link href="/power-apps" className="block hover:text-white">Power Apps</Link>
-                                    <Link href="/power-automate" className="block hover:text-white">Power Automate</Link>
-                                </div> */}
-                                </div>
-
-                                {/* <div>
-                                <Link href="/product-engineering" className="block text-white mb-2 hover:text-orange-400 transition">
-                                    Product Engineering
-                                </Link>
-                                <div className="space-y-1 pl-2 text-gray-300">
-                                    <Link href="/design-thinking" className="block hover:text-white">
-                                        Design Thinking-Led Product Development
-                                    </Link>
-                                </div>
-                            </div> */}
-                            </div>
-                        </div>
-
-                        {/* Artificial Intelligence */}
-                        <div className="-ml-2">
-                            <h3 className="text-xl font-normal text-orange-400 mb-4">Artificial Intelligence</h3>
-
-                            <div className="space-y-4">
-                                <Link href="/gen-ai" className="text-l font-normal block text-white hover:text-orange-400 transition">
-                                    Agentic AI
+                                <Link href="/gen-ai" className="text-l font-normal block text-orange-300 hover:text-orange-400 transition mt-12">
+                                    Artificial Intelligence
                                 </Link>
 
                                 <div>
                                     <Link href="/data-ai" className="text-l font-normal block text-white mb-2 hover:text-orange-400 transition">
                                         Generative AI
                                     </Link>
-                                    {/* <div className="space-y-1 pl-2 text-gray-300">
-                                    <Link href="/data-strategy" className="block hover:text-white">Data Strategy</Link>
-                                    <Link href="/ai-ml" className="block hover:text-white">AI & ML</Link>
-                                    <Link href="/data-engineering" className="block hover:text-white">Data Engineering</Link>
-                                    <Link href="/business-intelligence" className="block hover:text-white">
-                                        Business Intelligence and Reporting
-                                    </Link>
-                                </div> */}
+
                                 </div>
 
                                 <div>
                                     <Link href="/cloud-studio" className="text-l font-normal block text-white mb-2 hover:text-orange-400 transition">
                                         AI Managed Services
                                     </Link>
-                                    {/* <div className="space-y-1 pl-2 text-gray-300">
-                                    <Link href="/cloud-advisory" className="block hover:text-white">
-                                        Cloud Advisory & Consulting
-                                    </Link>
-                                    <Link href="/cloud-transformation" className="block hover:text-white">
-                                        Cloud Transformation Services
-                                    </Link>
-                                </div> */}
+
                                 </div>
+
+
+
+
+                            </div>
+                        </div>
+
+                        {/* Artificial Intelligence */}
+                        <div className="-ml-8">
+                            <h3 className="text-xl font-normal text-orange-400 mb-4">Knowledge Center</h3>
+
+                            <div className="space-y-4">
+                                <Link href="/case-studies" className="text-l font-normal block text-white hover:text-orange-400 transition mt-5.5">
+                                    Case Studies
+                                </Link>
 
                                 <div>
-                                    {/* <Link href="/application-modernization" className="block text-white mb-2 hover:text-orange-400 transition">
-                                    Data Visualization
-                                </Link> */}
-                                    {/* <div className="space-y-1 pl-2 text-gray-300">
-                                    <Link href="/leap-framework" className="block hover:text-white">LEAP Framework</Link>
-                                    <Link href="/power-apps" className="block hover:text-white">Power Apps</Link>
-                                    <Link href="/power-automate" className="block hover:text-white">Power Automate</Link>
-                                </div> */}
+                                    <Link href="/data-ai" className="text-l font-normal block text-white mb-2 hover:text-orange-400 transition">
+                                        Blogs
+                                    </Link>
+
                                 </div>
 
-                                {/* <div>
-                                <Link href="/product-engineering" className="block text-white mb-2 hover:text-orange-400 transition">
-                                    Product Engineering
-                                </Link>
-                                <div className="space-y-1 pl-2 text-gray-300">
-                                    <Link href="/design-thinking" className="block hover:text-white">
-                                        Design Thinking-Led Product Development
-                                    </Link>
-                                </div>
-                            </div> */}
                             </div>
                         </div>
 
                         {/* INDUSTRY */}
                         <div className="-ml-4">
                             <h3 className="text-xl font-normal text-orange-400 mb-4">Industry</h3>
-                            <div className="space-y-4 text-white mt-11">
+                            <div className="space-y-4 text-white mt-6">
                                 <Link href="/healthcare" className="text-l font-normal block hover:text-orange-400 transition">Healthcare & LifeSciences</Link>
                                 <Link href="/financial-services" className="text-l font-normal block hover:text-orange-400 transition">Supply Chain & Logistics</Link>
                                 <Link href="/manufacturing" className="text-l font-normal block hover:text-orange-400 transition">Manufacturing</Link>
@@ -265,13 +164,13 @@ export default function Footer() {
 
                             </div>
                         </div>
-                        <div className="flex items-start mt-6 -ml-7.5">
+                        <div className="flex items-start mt-6 -ml-5">
                             <Link href="/careers" className="text-xl font-normal text-orange-400 hover:text-white">
                                 Careers
                             </Link>
                         </div>
                         {/* Contact */}
-                        <div className="flex items-start mt-6  -ml-1">
+                        <div className="flex items-start mt-6  -ml-8">
                             <Link href="/contact" className="text-xl font-normal text-orange-400 hover:text-white">
                                 Contact Us
                             </Link>
@@ -292,79 +191,7 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* <div className="grid md:grid-cols-4 gap-12">
-
-                        {/* KNOWLEDGE CENTER
-                    <div>
-                        <h3 className="text-orange-400 font-semibold mb-4">Knowledge Center</h3>
-                        <div className="space-y-2 text-gray-300">
-                            <Link href="/blogs" className="block hover:text-white">Blogs</Link>
-                            <Link href="/case-studies" className="block hover:text-white">Case Studies</Link>
-                            <Link href="/news" className="block hover:text-white">News</Link>
-                        </div>
-                    </div> */}
-
-
-                    {/* <div>
-                            {/* <h3 className="text-orange-400 font-semibold mb-4">About Us</h3> */}
-
-                    {/* <div className="space-y-2 text-gray-300 mb-6">
-                                <Link href="/about" className="block hover:text-white">About Altsyss</Link>
-
-                            </div> */}
-
-                    {/* Careers */}
-                    {/* <div className="flex items-start">
-                                <Link href="/careers" className="text-orange-400 hover:text-white">
-                                    Careers
-                                </Link>
-                            </div> */}
-
-                    {/* Contact */}
-                    {/* <div className="flex items-start">
-                                <Link href="/contact" className="text-orange-400 hover:text-white">
-                                    Contact Us
-                                </Link>
-                            </div> */}
-
-                    {/* Connect */}
-                    {/* <div>
-                                <p className="text-gray-300 mb-2">Connect with us on</p>
-                                <Link href="https://linkedin.com" className="text-blue-400 font-semibold text-lg hover:underline">
-                                    LinkedIn
-                                </Link>
-                            </div> */}
-                    {/* </div> 
-                    </div>
-
-                </div> */}
-
-                    {/* MIDDLE SECTION */}
-                    {/* <div className="mt-16 border-t border-white/30 pt-8 flex flex-col md:flex-row items-center justify-between"> */}
-
-                    {/* LOGO + TEXT */}
-                    {/* <div className="flex items-center gap-8 mb-6 md:mb-0"> */}
-
-                    {/* LOGO TEXT */}
-                    {/* <h2 className="text-3xl font-semibold tracking-wide">
-                            latentview
-                        </h2> */}
-
-                    {/* DIVIDER
-                        <div className="h-10 w-[1px] bg-white/40"></div> */}
-
-                    {/* 20 YEARS
-                        <div className="flex items-center gap-3">
-                            <span className="text-3xl text-green-400 font-light">20</span>
-                            <div className="text-sm leading-tight text-gray-200">
-                                <p>Building</p>
-                                <p>What’s Next</p>
-                            </div>
-                        </div> */}
-                    {/* </div> */}
-
-
-                    {/* </div> */}
+                    
 
 
                 </div>
