@@ -45,11 +45,11 @@ export default function SuccessStories() {
     ];
 
     return (
-        <section className="h-screen bg-gray-100 py-10 overflow-hidden">
+        <section className="min-h-screen md:h-screen bg-gray-100 py-10 overflow-hidden">
 
             <div className="max-w-7xl mx-auto px-6">
 
-                <h2 className="text-6xl font-light tracking-tighter leading-tight mb-16">
+                <h2 className="md:text-6xl text-5xl font-light tracking-tighter leading-tight md:mb-16 mb-12">
                     Success Stories
                 </h2>
 
@@ -59,8 +59,14 @@ export default function SuccessStories() {
 
                 <Swiper
                     modules={[Autoplay, Pagination]}
-                    slidesPerView={3}
-                    spaceBetween={40}
+                    slidesPerView={1.1}
+                    spaceBetween={16}
+                    breakpoints={{
+                        768: {
+                            slidesPerView: 3,
+                            spaceBetween: 40,
+                        },
+                    }}
                     centeredSlides={true}
                     loop={true}
                     speed={1800}
@@ -79,7 +85,7 @@ export default function SuccessStories() {
 
                         <SwiperSlide key={i} className="transition-all duration-500">
 
-                            <div className="group relative bg-white rounded-md overflow-hidden shadow-lg transition-all duration-500 h-[450]">
+                            <div className="group relative bg-white rounded-md overflow-hidden shadow-lg transition-all duration-500 h-[320] md:h-[450]">
 
                                 {/* Image */}
                                 <div className="aspect-5/4 overflow-hidden relative z-20 transition-all duration-700 group-hover:h-full inset-0">

@@ -70,10 +70,8 @@ export default function Hero() {
     return (
         <section
             className="relative min-h-screen overflow-hidden bg-black"
-        //   style={{ backgroundImage: `url(${heroSlides[active].image})` }}
         >
             {/* Dark overlay */}
-            {/* <div className="absolute inset-0 bg-black/50"></div> */}
 
             <motion.div
                 key={active}
@@ -147,7 +145,6 @@ export default function Hero() {
             <div className="absolute inset-0 bg-black/40 pointer-events-none"></div>
 
             {/* Hero Content */}
-            {/* <div className="relative z-10 max-w-7xl mx-auto px-6 pt-40 text-white"> */}
             <AnimatePresence mode="wait">
                 <motion.div
 
@@ -157,9 +154,7 @@ export default function Hero() {
                     className="relative z-10 max-w-7xl mx-auto px-6 pt-40 text-white"
                 >
 
-                    {/* <h1 className="text-4xl md:text-6xl font-light max-w-2xl leading-tight">
-                    {heroSlides[active].title}
-                </h1> */}
+                    
 
                     <BlurText
                         key={`title-${active}`}
@@ -167,7 +162,7 @@ export default function Hero() {
                         delay={50}
                         animateBy="words"
                         direction="top"
-                        className={`${manrope.className} text-4xl md:text-6xl font-normal max-w-2xl leading-tight`}
+                        className={`${manrope.className} text-4xl md:text-6xl font-normal max-w-2xl md:mt-0 mt-40 leading-tight`}
                     />
 
                     <Link href={heroSlides[active].link}>
@@ -176,7 +171,7 @@ export default function Hero() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1}}
                             transition={{ delay: 0.8, duration: 0.5, ease: "easeInOut" }}
-                            className={`${manrope.className} mt-8 bg-red-600 px-6 py-3 rounded-md text-md hover:bg-red-700 transition font-normal`}
+                            className={`${manrope.className} mt-8 bg-red-600 px-3 py-2 md:px-6 md:py-3 rounded-md text-md hover:bg-red-700 transition font-normal`}
                         >
                             Explore services
                         </motion.button>
@@ -186,7 +181,7 @@ export default function Hero() {
             </AnimatePresence>
 
             {/* Bottom Tabs */}
-            <div className="absolute bottom-0 w-full px-6 pb-10">
+            <div className="absolute bottom-0 w-full px-5 sm:px-6 pb-6 sm:pb-10">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
 
                     {heroSlides.map((slide, index) => (
@@ -194,7 +189,7 @@ export default function Hero() {
                             key={index}
                             onClick={() => setActive(index)}
                             className={`${manrope.className} relative text-left p-6 bg-black/40 text-white rounded-sm backdrop-blur border border-white/5 transition
-              ${active === index ? "" : "hover:bg-black/60"}`}
+              ${active === index ? "block" : "hidden md:block"}`}
                         >
                             {slide.tab}
 

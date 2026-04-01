@@ -98,14 +98,14 @@ const ThoughtLeadership = () => {
     const activeLeader = leaders[activeIndex];
 
     return (
-        <section className="min-h-screen bg-blue-100 py-20 overflow-hidden">
-            <div className="max-w-6xl mx-auto px-6">
+        <section className="min-h-screen bg-blue-100 md:py-20 py-10 overflow-hidden">
+            <div className="max-w-6xl mx-auto px-1 md:px-6">
 
-                <h2 className="text-6xl font-light tracking-tighter leading-tight mb-16">
+                <h2 className="text-5xl md:text-6xl md:ml-0 ml-5 font-light tracking-tighter leading-tight mb-16">
                     Thought Leadership
                 </h2>
 
-                <div className="grid grid-cols-2 items-start">
+                <div className="grid grid-cols-2 md:grid-cols-2 items-start">
 
                     {/* LEFT SIDE IMAGE STACK */}
                     <div className="flex items-end gap-1 overflow-hidden">
@@ -126,9 +126,7 @@ const ThoughtLeadership = () => {
                                 animate={{ opacity: 0.8 }}
                                 transition={{ duration: 0.4 }}
                             />
-                            {/* <p className="absolute bottom-3 left-3 text-white text-sm">
-                {leaders[nextNextIndex].name}
-              </p> */}
+                            
                         </motion.div>
 
                         {/* Small Image 2 */}
@@ -147,15 +145,13 @@ const ThoughtLeadership = () => {
                                 animate={{ opacity: 0.9 }}
                                 transition={{ duration: 0.4 }}
                             />
-                            {/* <p className="absolute bottom-3 left-3 text-white text-sm">
-                {leaders[nextIndex].name}
-              </p> */}
+                            
                         </motion.div>
 
                         {/* BIG IMAGE */}
                         <motion.div
                             layout
-                            className="relative w-64 h-110 overflow-hidden rounded-[7px] shadow-xl"
+                            className="relative w-80 h-105 md:w-64 md:h-110 overflow-hidden rounded-[7px] shadow-xl"
                             transition={{ layout: { duration: 0.6, ease: "easeInOut" } }}
                         >
                             <AnimatePresence mode="wait">
@@ -170,34 +166,29 @@ const ThoughtLeadership = () => {
                                 />
                             </AnimatePresence>
 
-                            <div className="absolute bottom-0 left-0 w-full h-30 bg-linear-to-t from-black/70 to-transparent"></div>
+                            <div className="absolute bottom-0 left-0 w-full h-50 bg-linear-to-t from-black/80 to-transparent"></div>
                             <motion.p
                                 key={activeLeader.name}
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4 }}
-                                className={`${manrope.className} absolute bottom-2 left-4 text-white text-3xl font-normal`}
+                                className={`${manrope.className} absolute bottom-2 left-1 md:left-4 text-white text-2xl md:text-3xl font-normal`}
                             >
                                 {activeLeader.name} <br></br>
                                 
                                 {activeLeader.role && (
-                                <span className={`${manrope.className} text-[21px] leading-tight font-normal text-white`}>
+                                <span className={`${manrope.className} text-lg md:text-xl leading-tight font-normal text-white`}>
                                     {activeLeader.role}
                                 </span>
                             )}
                             </motion.p>
-                            {/* ROLE
-                            {activeLeader.role && (
-                                <p className="text-sm opacity-80 leading-tight">
-                                    {activeLeader.role}
-                                </p>
-                            )} */}
+                            
                         </motion.div>
 
                     </div>
 
                     {/* RIGHT SIDE CONTENT */}
-                    <div className="max-w-lg -ml-4">
+                    <div className="max-w-lg md:-ml-4 ml-4">
 
                         <AnimatePresence mode="wait">
 
@@ -209,21 +200,21 @@ const ThoughtLeadership = () => {
                                 transition={{ duration: 0.45, ease: "easeOut" }}
                             >
 
-                                <h3 className={`${manrope.className} text-3xl text-[#1368B6] font-normal leading-tight`}>
+                                <h3 className={`${manrope.className} text-xl md:text-3xl text-[#1368B6] font-normal leading-tight`}>
                                     {activeLeader.title}
                                 </h3>
 
-                                <p className={`${manrope.className} text-gray-700 mt-5 leading-relaxed whitespace-pre-line`}>
+                                <p className={`${manrope.className} text-[10px] md:text-[18px] text-gray-700 mt-5 leading-relaxed whitespace-pre-line`}>
                                     {activeLeader.description}
                                 </p>
 
-                                <div className="flex items-center gap-4 mt-8">
+                                <div className="flex flex-col md:flex-row items-start md:items-center gap-3 mt-2 md:mt-8">
 
                                     {/* READ MORE */}
                                     <Link href={activeLeader.link}>
                                         <motion.button
                                             whileTap={{ scale: 0.95 }}
-                                            className={`${manrope.className} bg-black text-white px-7 py-2 font-semibold tracking-widest text-md border-b border-transparent hover:bg-blue-100 hover:text-black hover:border-black duration-500 cursor-pointer whitespace-nowrap`}
+                                            className={`${manrope.className} bg-black text-white px-3 py-2 md:px-7 md:py-2 font-semibold tracking-widest text-[10px] md:text-[15px] border-b border-transparent hover:bg-blue-100 hover:text-black hover:border-black duration-500 cursor-pointer whitespace-nowrap`}
                                         >
                                             READ MORE
                                         </motion.button>
@@ -234,7 +225,7 @@ const ThoughtLeadership = () => {
                                         <Link href={activeLeader.caseStudyLink}>
                                             <motion.button
                                                 whileTap={{ scale: 0.95 }}
-                                                className={`${manrope.className} bg-transparent text-black px-3 py-2 font-semibold tracking-tight text-md border border-black hover:bg-black hover:text-white duration-500 cursor-pointer whitespace-nowrap`}
+                                                className={`${manrope.className} bg-black md:bg-transparent text-white md:text-black px-1 py-2 md:px-7 md:py-2 font-semibold tracking-tight text-[10px] md:text-[15px] border border-black hover:bg-black hover:text-white duration-500 cursor-pointer whitespace-nowrap`}
                                             >
                                                 Review the Tariff Simulation Model
                                             </motion.button>

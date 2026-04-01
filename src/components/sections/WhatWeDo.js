@@ -1,10 +1,9 @@
 "use client";
-import { motion } from "framer-motion";
-import Image from "next/image";
+
 import React from "react";
 import CardSwap, { Card } from "@/components/CardSwap";
 import { Manrope } from "next/font/google";
-import { BuildingOffice2Icon, BuildingOfficeIcon, ChartBarIcon, CodeBracketIcon, SparklesIcon } from "@heroicons/react/20/solid";
+import { BuildingOffice2Icon, ChartBarIcon, CodeBracketIcon, SparklesIcon } from "@heroicons/react/20/solid";
 
 const manrope = Manrope({
     subsets: ["latin"],
@@ -13,7 +12,7 @@ const manrope = Manrope({
 
 const WhatWeDo = () => {
     return (
-        <section className="relative bg-white py-20 min-h-screen overflow-hidden">
+        <section className="relative bg-white py-10 md:py-20 min-h-screen overflow-hidden">
 
             <div className="absolute inset-0 z-0">
                 <img
@@ -22,26 +21,19 @@ const WhatWeDo = () => {
                 />
 
                 {/* Dark overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/10 to-black/10"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/30 md:from-black/10 md:via-black/10 md:to-black/10"></div>
             </div>
 
-            {/* <motion.img
-                src="/Case 2 Img 1.png" // your PNG path
-                alt="Supply Chain Illustration"
-                initial={{ opacity: 0, x: 80 }}
-                animate={{ opacity: 0.9, x: 50 }}
-                transition={{ duration: 2, ease: "easeOut" }}
-                className="hidden md:block absolute left-10 top-650 w-[330] opacity-90"
-            /> */}
+            
 
             <div className="relative max-w-6xl z-20 mx-auto px-6 bg-cover">
 
-                <h2 className="text-6xl font-light text-white  tracking-tighter leading-tight mb-20">
+                <h2 className="text-5xl md:text-6xl font-light text-white  tracking-tighter leading-tight mb-20">
                     What We Do
                 </h2>
 
                 {/* IMPORTANT WRAPPER */}
-                <div className="h-75 relative flex justify-center mt-40">
+                <div className="h-75 relative flex justify-center mt-10 md:mt-40 -translate-x-30 md:translate-x-0">
 
                     <CardSwap
                         cardDistance={70}
@@ -55,7 +47,7 @@ const WhatWeDo = () => {
 
                             <div className="flex items-center gap-3 px-5 py-3 border-b bg-blue-100 border-white/200 text-black text-xl">
                                 <ChartBarIcon className="w-5 h-5 text-black" />
-                                {/* <span className="w-3 h-3 rounded-full bg-black"></span> */}
+                                
                                 Data Driven Analytics
                             </div>
 

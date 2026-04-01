@@ -16,7 +16,7 @@ const Careers = () => {
 
     return (
 
-        <>
+        <div className="w-full overflow-x-hidden">
             <section className="relative bg-white py-20 min-h-screen overflow-hidden">
 
                 <div className="absolute inset-0 z-0">
@@ -30,13 +30,13 @@ const Careers = () => {
                 </div>
 
 
-                <div className="relative max-w-6xl z-20 mx-auto px-6 bg-cover">
+                <div className="relative max-w-6xl z-20 mx-auto px-4 md:px-6 bg-cover">
 
                     <motion.h2
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className={`${manrope.className} text-7xl font-semibold text-white tracking-tighter leading-tight mb-4 mt-60`}
+                        className={`${manrope.className} text-6xl md:text-7xl font-semibold text-white tracking-tighter leading-tight mb-4 mt-60 md:mt-60`}
                     >
                         Career @ <span className="text-blue-300 font-semibold">Techylla</span>
                     </motion.h2>
@@ -45,7 +45,7 @@ const Careers = () => {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-                        className={`${manrope.className} text-4xl font-light text-white tracking-wide leading-10 mb-20`}
+                        className={`${manrope.className} text-md md:text-4xl font-light text-white tracking-wide leading-10 mb-20`}
                     >
                         Drive Change, Shape The Future with Data
                     </motion.h2>
@@ -77,7 +77,7 @@ const Careers = () => {
                             alt="Why choose us"
                             width={390}
                             height={500}
-                            className="rounded-lg object-cover mt-30"
+                            className="rounded-lg object-cover mt-40 md:mt-30"
                         />
 
                         {/* Overlay Text */}
@@ -89,7 +89,7 @@ const Careers = () => {
                     </motion.div>
 
                     {/* RIGHT CONTENT */}
-                    <div className="space-y-8 mt-30 -ml-10">
+                    <div className="space-y-8 mt-10 md:mt-30 ml-0 md:-ml-10">
 
                         {[
                             {
@@ -183,14 +183,14 @@ const Careers = () => {
                         </div>
 
                         {/* RESPONSIVE MASK (SAFE) */}
-                        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-16 sm:h-20 bg-gradient-to-t from-blue-100 to-white"></div>
+                        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-30 sm:h-20 bg-gradient-to-t from-blue-100 to-white"></div>
 
                     </div>
 
 
                 </div>
             </section>
-        </>
+        </div>
     )
 }
 

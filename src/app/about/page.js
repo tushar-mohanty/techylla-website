@@ -1,11 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import Image from "next/image";
 import React from "react";
 import { ArrowLeft, ArrowRight, Eye, LineChart } from "lucide-react";
 import { Manrope } from "next/font/google";
-import { BuildingOffice2Icon, BuildingOfficeIcon, ChartBarIcon, CodeBracketIcon, SparklesIcon } from "@heroicons/react/20/solid";
 import Circle from "@/components/Circle";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -17,8 +15,6 @@ const manrope = Manrope({
 
 
 const AboutUs = () => {
-
-    // const [fileName, setFileName] = useState("No file chosen");
 
     const [formData, setFormData] = useState({
         firstName: "",
@@ -59,21 +55,6 @@ const AboutUs = () => {
         });
     };
 
-    // const handleFileChange = (e) => {
-    //     if (e.target.files[0]) {
-    //         setFileName(e.target.files[0].name);
-
-    //         setFormData((prev) => ({
-    //             ...prev,
-    //             resume: e.target.files[0],
-    //         }));
-
-    //         setErrors((prev) => ({
-    //             ...prev,
-    //             resume: "",
-    //         }));
-    //     }
-    // };
 
     const validateForm = () => {
         const newErrors = {};
@@ -90,9 +71,6 @@ const AboutUs = () => {
             }
         }
 
-        // if (!formData.contact.trim()) {
-        //     newErrors.contact = "Required";
-        // }
 
         if (!formData.contact || formData.contact.length < 10) {
             newErrors.contact = "Enter a valid phone number";
@@ -107,7 +85,6 @@ const AboutUs = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // setIsSubmitted(true);
 
         const validationErrors = validateForm();
         setErrors(validationErrors);
@@ -176,7 +153,7 @@ const AboutUs = () => {
 
     return (
 
-        <>
+        <div className="w-full overflow-x-hidden">
 
             {/* ✅ ADD TOAST HERE */}
             {toast && (
@@ -186,7 +163,7 @@ const AboutUs = () => {
                     {toast.message}
                 </div>
             )}
-            <section className="relative bg-white py-20 min-h-screen overflow-hidden">
+            <section className="relative bg-white py-20 min-h-screen overflow-x-hidden">
 
                 <div className="absolute inset-0 z-0">
                     <img
@@ -199,13 +176,13 @@ const AboutUs = () => {
                 </div>
 
 
-                <div className="relative max-w-6xl z-20 mx-auto px-6 bg-cover">
+                <div className="relative w-full max-w-6xl z-20 mx-auto px-4 md:px-6 bg-cover">
 
                     <motion.h2
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className={`${manrope.className} text-7xl font-semibold text-white tracking-tighter leading-tight mb-4 mt-60`}
+                        className={`${manrope.className} text-6xl md:text-7xl font-semibold text-white tracking-tighter leading-tight mb-1 md:mb-4 mt-60 md:mt-60`}
                     >
                         About <span className="text-blue-300 font-semibold">Techylla</span>
                     </motion.h2>
@@ -214,7 +191,7 @@ const AboutUs = () => {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-                        className={`${manrope.className} text-4xl font-light text-white tracking-wide leading-10 mb-20`}
+                        className={`${manrope.className} text-md md:text-4xl font-light text-white tracking-wide leading-10 mb-20`}
                     >
                         Data-driven. AI-powered. Future-ready.
                     </motion.h2>
@@ -241,16 +218,10 @@ const AboutUs = () => {
                         viewport={{ once: true }}
                         className="relative"
                     >
-                        {/* <Image
-                            src="/Careers Bg2.jpg" // replace with your image
-                            alt="Why choose us"
-                            width={390}
-                            height={500}
-                            className="rounded-lg object-cover mt-30"
-                        /> */}
+                        
 
                         {/* Overlay Text */}
-                        <div className="absolute -mt-15 -ml-5">
+                        <div className="absolute top-2 md:-mt-15 md:-ml-5">
                             <h2 className={`${manrope.className} text-black text-6xl font-light`}>
                                 Our Story
                             </h2>
@@ -285,7 +256,7 @@ const AboutUs = () => {
             </section>
 
             <section className="w-full py-15 bg-gradient-to-r from-blue-100 to-pink-100">
-                <div className="max-w-7xl ml-50 grid md:grid-cols-2 gap-16 px-6 md:px-16 items-center">
+                <div className="max-w-7xl ml-0 md:ml-50 grid md:grid-cols-2 gap-16 px-6 md:px-16 items-center">
 
                     {/* VISION */}
                     <motion.div
@@ -326,7 +297,7 @@ const AboutUs = () => {
                 </div>
             </section >
 
-            <section className="bg-gradient-to-r from-pink-300 to-blue-300 py-10 px-70 text-center">
+            <section className="bg-gradient-to-r from-pink-300 to-blue-300 py-10 px-4 md:px-70 text-center">
 
                 <motion.h2
                     initial={{ opacity: 0, y: 40 }}
@@ -382,21 +353,21 @@ const AboutUs = () => {
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: "easeOut" }}
-                    viewport={{ once: true }} className="text-center -mt-10 text-5xl font-semibold text-[#1a237e] mb-20">
+                    viewport={{ once: true }} className="text-center -mt-10 text-3xl md:text-5xl font-semibold text-[#1a237e] mb-20">
                     What sets us apart: Driven by Excellence!
                 </motion.h2>
 
-                <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-5 items-center">
+                <div className="max-w-7xl mx-auto grid grid-cols-3 md:grid-cols-3 gap-5 items-center">
 
                     {/* LEFT SIDE */}
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, ease: "easeOut" }}
-                        viewport={{ once: true }} className="space-y-30 ">
+                        viewport={{ once: true }} className="space-y-30">
 
                         <div>
-                            <h3 className="text-3xl font-semibold text-[#1a237e] mb-3">
+                            <h3 className="text-xl md:text-3xl font-semibold text-[#1a237e] mb-3">
                                 Intelligence Powered by Data
                             </h3>
                             <p className="text-gray-600 text-md">
@@ -404,10 +375,10 @@ const AboutUs = () => {
                             </p>
                         </div>
 
-                        <div className="border-t-2 border-gray-700 w-[400]"></div>
+                        <div className="border-t-2 border-gray-700 md:w-[400] w-[315]"></div>
 
                         <div>
-                            <h3 className="text-3xl font-semibold text-[#1a237e] mb-3">
+                            <h3 className="text-xl md:text-3xl font-semibold text-[#1a237e] mb-3">
                                 Future-Ready by Design
                             </h3>
                             <p className="text-gray-600 text-md">
@@ -422,12 +393,12 @@ const AboutUs = () => {
 
                         <img
                             src="/About Us Img 3.png"   // 👈 replace with your image
-                            className="w-60 h-60 rounded-full object-cover"
+                            className="w-40 h-50 md:w-60 md:h-60 rounded-full object-cover -translate-y-20 md:translate-y-0"
                         />
 
                         <img
                             src="/About Us Img 4.png"  // 👈 replace with your image
-                            className="w-60 h-60 rounded-full object-cover"
+                            className="w-40 h-50 md:w-60 md:h-60 rounded-full object-cover translate-y-25 md:translate-y-0"
                         />
 
                     </div>
@@ -437,10 +408,10 @@ const AboutUs = () => {
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, ease: "easeOut" }}
-                        viewport={{ once: true }} className="space-y-30">
+                        viewport={{ once: true }} className="md:space-y-30 space-y-72">
 
                         <div>
-                            <h3 className="text-3xl font-semibold text-[#1a237e] mb-3">
+                            <h3 className="text-xl md:text-3xl font-semibold text-[#1a237e] mb-3">
                                 Innovation That Matters
                             </h3>
                             <p className="text-gray-600 text-md">
@@ -448,10 +419,10 @@ const AboutUs = () => {
                             </p>
                         </div>
 
-                        <div className="border-t-2 border-gray-700 w-[400] ml"></div>
+                        <div className="hidden md:block border-t-2 border-gray-700 w-[400] ml"></div>
 
                         <div>
-                            <h3 className="text-3xl font-semibold text-[#1a237e] mb-3">
+                            <h3 className="text-xl md:text-3xl font-semibold text-[#1a237e] mb-3">
                                 People at the Core
                             </h3>
                             <p className="text-gray-600 text-md">
@@ -810,7 +781,7 @@ const AboutUs = () => {
                     </motion.form>
                 </div>
             </section>
-        </>
+        </div>
     )
 }
 

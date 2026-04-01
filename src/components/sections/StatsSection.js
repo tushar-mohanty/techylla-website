@@ -11,16 +11,16 @@ const manrope = Manrope({
 
 export default function StatsSection() {
     return (
-        <section className="grid md:grid-cols-[2fr_1fr] min-h-screen">
+        <section className="grid grid-cols-1 md:grid-cols-[2fr_1fr] min-h-screen">
 
             {/* LEFT SIDE (LIGHT BLUE) */}
-            <div className={`${manrope.className} bg-blue-800 text-white flex items-center px-19 py-20`}>
+            <div className={`${manrope.className} bg-blue-800 text-white flex items-center px-5 py-12 md:px-19 md:py-20`}>
                 <div>
-                    <h1 className="text-5xl font-light leading-tight max-w-4xl ml-20">
+                    <h1 className="text-3xl md:text-5xl font-light leading-tight max-w-4xl md:ml-20 ml-5">
                         We empower organizations to thrive in the digital era through intelligent data and transformative analytics
                     </h1>
 
-                    <button className="mt-8 bg-black px-9 py-3 text-md tracking-widest ml-20">
+                    <button className="mt-8 bg-black px-5 py-2 md:px-9 md:py-3 text-md tracking-widest md:ml-20 ml-5">
                         KNOW MORE
                     </button>
                 </div>
@@ -28,7 +28,7 @@ export default function StatsSection() {
 
             {/* RIGHT SIDE (DARK BLUE) */}
             <div className={`${manrope.className} font-light bg-blue-900 text-white flex items-center px-10 py-10`}>
-                <div className="space-y-12">
+                <div className="space-y-8 md:space-y-12">
 
                     <div>
                         <h2 className="text-5xl font-light">

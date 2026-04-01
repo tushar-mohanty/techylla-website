@@ -1,7 +1,5 @@
 "use client";
 
-import { FaLinkedinIn, FaInstagram, FaYoutube, FaFacebookF } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import { Manrope } from "next/font/google";
 
@@ -18,7 +16,7 @@ export default function Footer() {
             <div className="grid md:grid-cols-2 gap-12">
 
                 {/* LEFT SIDE */}
-                <div className="mt-15 ml-15">
+                <div className="mt-10 ml-0 md:mt-15 md:ml-15">
                     <h2 className={`${manrope.className} text-7xl font-semibold tracking-tight leading-tight mb-10`}>
                         Think Data <br />
                         Think <span className="text-blue-400 font-semibold">Techylla</span>
@@ -34,7 +32,7 @@ export default function Footer() {
                         />
                     </Link>
 
-                    <div className={`${manrope.className} grid grid-cols-2 gap-y-2 text-sm text-gray-200 mt-6 -mb-8 ml-2`}>
+                    <div className={`${manrope.className} grid grid-cols-2 gap-y-2 gap-x-4 md:gap-x-0 text-sm text-gray-200 mt-6 -mb-8 ml-2`}>
 
                         {/* INDIA */}
                         <p className="font-semibold text-white">India Office:</p>
@@ -48,13 +46,13 @@ export default function Footer() {
 
                         {/* US + CONTACT */}
                         <p className="text-l font-semibold text-white">US Office:</p>
-                        <p className="-ml-10">Tel: +1 (732) 208-4788 (US)</p>
+                        <p className="-ml-5 md:-ml-10">Tel: +1 (732) 208-4788 (US)</p>
 
                         <p>116 Village Blvd Suite 200</p>
-                        <p className="-ml-10">Tel: +91 98311 69927 (IN)</p>
+                        <p className="-ml-5 md:-ml-10">Tel: +91 98311 69927 (IN)</p>
 
                         <p>Princeton, NJ 08540</p>
-                        <a href="mailto:sales@techylla.com" className="hover:underline -ml-10">
+                        <a href="mailto:sales@techylla.com" className="hover:underline -ml-5 md:-ml-10">
                             Email: sales@techylla.com
                         </a>
 
@@ -62,8 +60,8 @@ export default function Footer() {
                 </div>
 
                 {/* RIGHT SIDE */}
-                <div className={`${manrope.className} font-semibold text-white mb-3 flex flex-col gap-16 text-sm mt-20 -ml-18`}>
-                    <div className="grid md:grid-cols-4 gap-5">
+                <div className={`${manrope.className} font-semibold text-white mb-3 flex flex-col gap-16 text-sm mt-10 ml-0 md:mt-20 md:-ml-18`}>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
 
                         {/* Data & Cloud */}
                         <div>
@@ -98,8 +96,7 @@ export default function Footer() {
                         </div>
 
                         {/* Business Transformation */}
-                        <div className="-ml-5">
-                            {/* <h3 className="text-xl font-normal text-orange-400 mb-4">Business Transformation</h3> */}
+                        <div className="ml-0 md:-ml-5">
 
                             <div className="space-y-4">
                                 
@@ -129,7 +126,7 @@ export default function Footer() {
                         </div>
 
                         {/* Artificial Intelligence */}
-                        <div className="-ml-8">
+                        <div className="ml-0 md:-ml-8">
                             <h3 className="text-xl font-normal text-orange-400 mb-4">Knowledge Center</h3>
 
                             <div className="space-y-4">
@@ -148,7 +145,7 @@ export default function Footer() {
                         </div>
 
                         {/* INDUSTRY */}
-                        <div className="-ml-4">
+                        <div className="ml-0 md:-ml-4">
                             <h3 className="text-xl font-normal text-orange-400 mb-4">Industry</h3>
                             <div className="space-y-4 text-white mt-6">
                                 <Link href="/healthcare" className="text-l font-normal block hover:text-orange-400 transition">Healthcare & LifeSciences</Link>
@@ -164,19 +161,19 @@ export default function Footer() {
 
                             </div>
                         </div>
-                        <div className="flex items-start mt-6 -ml-5">
+                        <div className="flex items-start mt-6 ml-0 md:-ml-5">
                             <Link href="/careers" className="text-xl font-normal text-orange-400 hover:text-white">
                                 Careers
                             </Link>
                         </div>
                         {/* Contact */}
-                        <div className="flex items-start mt-6  -ml-8">
+                        <div className="flex items-start mt-6 ml-0 md:-ml-8">
                             <Link href="/contact" className="text-xl font-normal text-orange-400 hover:text-white">
                                 Contact Us
                             </Link>
                         </div>
                         {/* Connect */}
-                        <div className="mt-6 -ml-4">
+                        <div className="mt-6 ml-0 md:-ml-4">
                             <p className="text-xl font-normal text-orange-400">
                                 Connect with us on
                             </p>
@@ -185,7 +182,7 @@ export default function Footer() {
                                 <img
                                     src="/linkedin.png"   // 👈 put your image in public folder
                                     alt="LinkedIn"
-                                    className="w-45 h-29 cursor-pointer hover:opacity-80 -mt-8 -ml-4"
+                                    className="md:w-45 md:h-29 cursor-pointer hover:opacity-80 -mt-8 md:-ml-4 -ml-3.5"
                                 />
                             </Link>
                         </div>
@@ -197,7 +194,7 @@ export default function Footer() {
                 </div>
                 {/* BOTTOM */}
 
-                <div className="relative pt-6 flex flex-col justify-between text-sm text-gray-200 ml-15 before:content-[''] before:absolute before:top-0 before:left-0 before:-translate-x-1.5 before:w-[1320] before:border-t before:border-white/20">
+                <div className="relative pt-6 flex flex-col justify-between text-sm text-gray-200 ml-0 md:ml-15 before:content-[''] before:absolute before:top-0 before:left-0 before:-translate-x-1.5 before:w-[300] md:before:w-[1320] before:border-t before:border-white/20">
 
                     <p className="-mt-2">
                         Copyright © 2026 Techylla. All rights reserved.
