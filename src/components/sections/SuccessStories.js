@@ -85,7 +85,7 @@ export default function SuccessStories() {
 
                         <SwiperSlide key={i} className="transition-all duration-500">
 
-                            <div className="group relative bg-white rounded-md overflow-hidden shadow-lg transition-all duration-500 h-[320] md:h-[450]">
+                            <div className="group relative bg-white rounded-md overflow-hidden shadow-lg transition-all duration-500 h-[350] md:h-[450]">
 
                                 {/* Image */}
                                 <div className="aspect-5/4 overflow-hidden relative z-20 transition-all duration-700 group-hover:h-full inset-0">
