@@ -171,7 +171,7 @@ export default function Navbar() {
                                     exit={{ opacity: 0, y: 15 }}
 
                                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                    className="absolute left-1/2 z-10 mt-5 w-screen max-w-lg -translate-x-1/2 rounded-3xl bg-white shadow-lg"
+                                    className={`${manrope.className} absolute left-1/2 z-10 mt-5 w-screen max-w-lg -translate-x-1/2 rounded-3xl bg-white shadow-lg`}
                                 >
                                     <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
                                     <div className="p-4">
@@ -251,7 +251,7 @@ export default function Navbar() {
                                     exit={{ opacity: 0, y: 15 }}
 
                                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                    className="absolute left-1/2 z-10 mt-5 w-screen max-w-lg -translate-x-1/2 rounded-3xl bg-white shadow-lg"
+                                    className={`${manrope.className} absolute left-1/2 z-10 mt-5 w-screen max-w-lg -translate-x-1/2 rounded-3xl bg-white shadow-lg`}
                                 >
                                     <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
                                     <div className="p-4">
@@ -306,7 +306,7 @@ export default function Navbar() {
                                     exit={{ opacity: 0, y: 15 }}
 
                                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                    className="absolute left-1/2 z-10 mt-5 w-screen max-w-lg -translate-x-1/2 rounded-3xl bg-white shadow-lg"
+                                    className={`${manrope.className} absolute left-1/2 z-10 mt-5 w-screen max-w-lg -translate-x-1/2 rounded-3xl bg-white shadow-lg`}
                                 >
                                     <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
                                     <div className="p-4">

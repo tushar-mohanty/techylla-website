@@ -13,31 +13,31 @@ export default function SuccessStories() {
 
     const stories = [
         {
-            image: "/story1.jpg",
+            image: "/Tariff-1.png",
             title:
                 "Global Tariff Financial Modeling System",
             slug: "story-1",
         },
         {
-            image: "/story2.jpg",
+            image: "/SAP-1.png",
             title:
                 "Transforming Supply Chain Operations with SAP-Based Intercompany Automation",
             slug: "story-2",
         },
         {
-            image: "/story3.jpg",
+            image: "/SmartFactory-1.png",
             title:
                 "Transforming Production with an AI-Powered Early Warning System",
             slug: "story-3",
         },
         {
-            image: "/story4.jpg",
+            image: "/MedTech-1.png",
             title:
                 "The Intelligent Quality Ecosystem: Moving from Data Silos to Autonomous Quality Surveillance",
             slug: "story-4",
         },
         {
-            image: "/story5.jpg",
+            image: "/PulpMill-1.png",
             title:
                 "Integrated Analytics for Pulp Mill Optimization",
             slug: "story-5",
