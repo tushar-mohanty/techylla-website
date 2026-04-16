@@ -11,16 +11,24 @@ const manrope = Manrope({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
+import { Urbanist } from 'next/font/google'
+
+const urbanist = Urbanist({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+})
+
 const Manufacturing = () => {
   return (
     <div className="w-full overflow-x-hidden">
 
       {/* HERO */}
-      <section className="relative bg-white py-20 min-h-screen overflow-hidden">
+      <section aria-label="Manufacturing AI solutions overview" className="relative bg-white py-20 min-h-screen overflow-hidden">
 
         <div className="absolute inset-0 z-0">
           <img
             src="/ManufacturingPageImg1.png"
+            alt="Manufacturing Background image"
             className="w-full h-full object-cover"
           />
 
@@ -33,7 +41,7 @@ const Manufacturing = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className={`${manrope.className} text-5xl md:text-7xl font-semibold text-white tracking-tighter leading-tight mb-4 mt-60`}
+            className={`${urbanist.className} text-5xl md:text-7xl font-semibold text-white tracking-tight leading-tight mb-4 mt-60`}
           >
             Manufacturing @ <span className="text-blue-300">Techylla</span>
           </motion.h2>
@@ -42,7 +50,7 @@ const Manufacturing = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className={`${manrope.className} text-md md:text-3xl font-light text-white tracking-wide leading-10 mb-20`}
+            className={`${urbanist.className} text-md md:text-3xl font-light text-white tracking-wide leading-10 mb-20`}
           >
             Transforming Supply Chains with <span className="text-blue-200">AI-Enabled Available-to-Promise (ATP)</span> Optimization
           </motion.h2>
@@ -51,7 +59,7 @@ const Manufacturing = () => {
       </section>
 
       {/* SECTION 2 */}
-      <section className="relative bg-blue-100 px-6 md:px-12 min-h-screen overflow-hidden">
+      <section aria-label="AI-enabled ATP explanation" className="relative bg-blue-100 px-6 md:px-12 min-h-screen overflow-hidden">
 
         <img src="/Bg Network Pattern.png" className="absolute -top-50 -left-60 w-[500] opacity-30 pointer-events-none select-none" />
         <img src="/Bg Network Pattern.png" className="absolute -bottom-40 -right-30 w-[600] opacity-30 pointer-events-none select-none" />
@@ -68,14 +76,14 @@ const Manufacturing = () => {
           >
             <Image
               src="/ManufacturingPageImg2.png"
-              alt="Manufacturing"
+              alt="Manufacturing supply chain and AI-driven optimization process"
               width={390}
               height={500}
               className="rounded-lg object-cover mt-45 md:mt-50"
             />
 
             <div className="absolute top-3 md:top-6 md:-ml-5 ml-0 ">
-              <h2 className={`${manrope.className} text-black md:text-6xl text-5xl font-light`}>
+              <h2 className={`${urbanist.className} text-black md:text-6xl text-5xl font-light`}>
                 What is <span className="text-blue-800">AI-Enabled ATP Optimization</span> ?
               </h2>
             </div>
@@ -84,11 +92,11 @@ const Manufacturing = () => {
           {/* TEXT */}
           <div className="space-y-8 mt-10 md:mt-30 ml-0 md:-ml-10 md:mb-0 mb-10">
 
-            <h2 className={`${manrope.className} text-black text-xl font-light`}>
+            <h2 className={`${urbanist.className} text-black text-xl font-light`}>
               Modern manufacturing requires accurate and reliable delivery commitments. Traditional Available-to-Promise (ATP) mechanisms within ERP systems rely on transactional data such as inventory, purchase orders, and production schedules. While effective in structured environments, these systems lack the ability to adapt to dynamic supply chain conditions.
             </h2>
 
-            <h2 className={`${manrope.className} text-blue-900 text-xl font-medium`}>
+            <h2 className={`${urbanist.className} text-blue-900 text-xl font-medium`}>
               To address this gap, an AI-enabled ATP approach introduces predictive intelligence, enabling organizations to move from reactive planning to proactive decision-making.
             </h2>
 
@@ -96,7 +104,7 @@ const Manufacturing = () => {
         </div>
       </section>
 
-      <section className={`${manrope.className} relative py-10 px-6 md:px-19 overflow-hidden bg-gradient-to-t from-blue-50 to-pink-50`}>
+      <section aria-label="Challenges in traditional ATP systems" className={`${urbanist.className} relative py-10 px-6 md:px-19 overflow-hidden bg-gradient-to-t from-blue-50 to-pink-50`}>
         {/* Heading */}
         <div className="max-w-6xl mx-auto mb-10">
           <motion.h2
@@ -205,7 +213,7 @@ const Manufacturing = () => {
         </div>
       </section>
 
-      <section className={`${manrope.className} relative py-10 px-6 md:px-19 overflow-hidden bg-gradient-to-b from-blue-50 to-pink-50`}>
+      <section aria-label="AI-driven ATP prediction approach" className={`${urbanist.className} relative py-10 px-6 md:px-19 overflow-hidden bg-gradient-to-b from-blue-50 to-pink-50`}>
 
         {/* Heading */}
         <div className="max-w-6xl mx-auto mb-14">
@@ -331,7 +339,7 @@ const Manufacturing = () => {
         </div>
       </section>
 
-      <section className={`${manrope.className} relative py-10 px-6 md:px-19 bg-black text-white min-h-[70%] overflow-hidden`}>
+      <section aria-label="Business impact of AI-enabled ATP" className={`${urbanist.className} relative py-10 px-6 md:px-19 bg-black text-white min-h-[70%] overflow-hidden`}>
 
         <img src="/Bg Network Pattern.png" className="absolute -top-50 -left-60 w-[500] opacity-100 pointer-events-none select-none" />
         <img src="/Bg Network Pattern.png" className="absolute -bottom-40 -right-30 w-[700] opacity-100 pointer-events-none select-none" />
@@ -359,7 +367,7 @@ const Manufacturing = () => {
 
             <img
               src="/ManufacturingPageImg4.jpeg"
-              alt=""
+              alt="Improving delivery accuracy in manufacturing supply chains"
               className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-500"
             />
 
@@ -385,7 +393,7 @@ const Manufacturing = () => {
 
             <img
               src="/ManufacturingPageImg5.jpeg"
-              alt=""
+              alt="Optimizing inventory and reducing operational costs"
               className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-500"
             />
 
@@ -396,7 +404,7 @@ const Manufacturing = () => {
                 Optimize Inventory & Reduce Costs
               </h3>
               <p className="text-sm font-light text-gray-300">
-                Improve inventory utilization across locations while reducing expediting and re-planning costs.
+                Enhance inventory utilization across locations while minimizing expediting efforts and reducing the costs associated with frequent re-planning.
               </p>
             </div>
 
@@ -411,7 +419,7 @@ const Manufacturing = () => {
 
             <img
               src="/ManufacturingPageImg6.jpeg"
-              alt=""
+              alt="Data-driven decision making in manufacturing operations"
               className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-500"
             />
 
@@ -431,7 +439,7 @@ const Manufacturing = () => {
         </div>
       </section>
 
-      <section className="relative bg-gradient-to-br from-blue-100 via-white to-blue-100 px-6 md:px-12 overflow-hidden min-h-screen">
+      <section aria-label="Manufacturing inquiry form" className="relative bg-gradient-to-br from-blue-100 via-white to-blue-100 px-6 md:px-12 overflow-hidden min-h-screen">
 
         {/* Background Pattern */}
         <img
@@ -452,11 +460,11 @@ const Manufacturing = () => {
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            <h2 className={`${manrope.className} text-5xl font-semibold text-black leading-tight mb-6 mt-10`}>
+            <h2 className={`${urbanist.className} text-5xl font-semibold text-black leading-tight mb-6 mt-10`}>
               Have an Idea? Let’s Build It <span className="text-blue-800 font-bold">Together</span>
             </h2>
 
-            <p className={`${manrope.className} text-gray-800 text-xl max-w-[700]`}>
+            <p className={`${urbanist.className} text-gray-800 text-xl max-w-[700]`}>
               From concept to reality, we make it happen.
             </p>
           </motion.div>
@@ -464,7 +472,7 @@ const Manufacturing = () => {
           {/* RIGHT SIDE FORM */}
           <div className="relative mt-10 p-6 sm:p-8 rounded-xl shadow-lg bg-white overflow-hidden">
 
-            <h3 className={`${manrope.className} text-2xl sm:text-3xl font-semibold mb-4`}>
+            <h3 className={`${urbanist.className} text-2xl sm:text-3xl font-semibold mb-4`}>
               Send us your details
             </h3>
 
@@ -478,6 +486,7 @@ const Manufacturing = () => {
             <div className="form-wrapper">
               <div
                 className="hs-form-frame"
+                aria-label="Manufacturing solutions inquiry form"
                 data-region="na2"
                 data-form-id="2d512c76-1898-499f-a646-13ff510d1f49"
                 data-portal-id="245721089"

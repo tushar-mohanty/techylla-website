@@ -10,6 +10,13 @@ const manrope = Manrope({
     weight: ["300", "400", "500", "600", "700", "800"]
 });
 
+import { Urbanist } from 'next/font/google'
+
+const urbanist = Urbanist({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+})
+
 
 const Careers = () => {
 
@@ -22,6 +29,7 @@ const Careers = () => {
                 <div className="absolute inset-0 z-0">
                     <img
                         src="/Careers Bg1.jpg"
+                        alt="Careers Page Background Image"
                         className="w-full h-full object-cover"
                     />
 
@@ -36,7 +44,7 @@ const Careers = () => {
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className={`${manrope.className} text-6xl md:text-7xl font-semibold text-white tracking-tighter leading-tight mb-4 mt-60 md:mt-60`}
+                        className={`${urbanist.className} text-6xl md:text-7xl font-semibold text-white tracking-tight leading-tight mb-4 mt-60 md:mt-60`}
                     >
                         Career @ <span className="text-blue-300 font-semibold">Techylla</span>
                     </motion.h2>
@@ -45,7 +53,7 @@ const Careers = () => {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-                        className={`${manrope.className} text-md md:text-4xl font-light text-white tracking-wide leading-10 mb-20`}
+                        className={`${urbanist.className} text-md md:text-4xl font-light text-white tracking-wide leading-10 mb-20`}
                     >
                         Drive Change, Shape The Future with Data
                     </motion.h2>
@@ -53,7 +61,7 @@ const Careers = () => {
                 </div>
 
             </section >
-            <section className="relative bg-blue-100 px-6 md:px-12 min-h-screen overflow-hidden">
+            <section aria-label="Why choose Techylla" className="relative bg-blue-100 px-6 md:px-12 min-h-screen overflow-hidden">
                 <img
                     src="/Bg Network Pattern.png"
                     className="absolute -top-50 -left-60 w-[500] rotate-350 opacity-30 pointer-events-none select-none"
@@ -74,7 +82,7 @@ const Careers = () => {
                     >
                         <Image
                             src="/Careers Bg2.jpg" // replace with your image
-                            alt="Why choose us"
+                            alt="Team collaboration and work culture at Techylla"
                             width={390}
                             height={500}
                             className="rounded-lg object-cover mt-40 md:mt-30"
@@ -82,7 +90,7 @@ const Careers = () => {
 
                         {/* Overlay Text */}
                         <div className="absolute top-6 -ml-5">
-                            <h2 className={`${manrope.className} text-black text-6xl font-light`}>
+                            <h2 className={`${urbanist.className} text-black text-6xl font-light`}>
                                 Why choose us?
                             </h2>
                         </div>
@@ -116,10 +124,10 @@ const Careers = () => {
                                 transition={{ delay: i * 0.2, duration: 0.6 }}
                                 viewport={{ once: true }}
                             >
-                                <h3 className={`${manrope.className} text-2xl md:text-3xl font-medium mb-2`}>
+                                <h3 className={`${urbanist.className} text-2xl md:text-3xl font-medium mb-2`}>
                                     {item.title}
                                 </h3>
-                                <p className={`${manrope.className} text-gray-700 mb-4`}>{item.desc}</p>
+                                <p className={`${urbanist.className} text-gray-700 mb-4`}>{item.desc}</p>
 
                                 {i !== 3 && (
                                     <div className="border-b border-gray-300 mt-6"></div>
@@ -130,7 +138,7 @@ const Careers = () => {
                     </div>
                 </div>
             </section>
-            <section className="relative bg-gradient-to-br from-blue-100 via-white to-blue-100 px-6 md:px-12 overflow-hidden min-h-screen">
+            <section aria-label="Join Techylla careers form" className="relative bg-gradient-to-br from-blue-100 via-white to-blue-100 px-6 md:px-12 overflow-hidden min-h-screen">
 
                 {/* Background Pattern */}
                 <img
@@ -151,11 +159,11 @@ const Careers = () => {
                         transition={{ duration: 0.7 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className={`${manrope.className} text-5xl font-semibold text-black leading-tight mb-6 mt-10`}>
+                        <h2 className={`${urbanist.className} text-5xl font-semibold text-black leading-tight mb-6 mt-10`}>
                             Join <span className="text-blue-800 font-bold">Techylla</span> and shape the future of Data and AI
                         </h2>
 
-                        <p className={`${manrope.className} text-gray-800 text-xl max-w-[700]`}>
+                        <p className={`${urbanist.className} text-gray-800 text-xl max-w-[700]`}>
                             Where your skills create impact, and your growth never stops.
                         </p>
                     </motion.div>
@@ -163,7 +171,7 @@ const Careers = () => {
                     {/* RIGHT SIDE FORM */}
                     <div className="relative mt-10 p-6 sm:p-8 rounded-xl shadow-lg bg-white overflow-hidden">
 
-                        <h3 className={`${manrope.className} text-2xl sm:text-3xl font-semibold mb-4`}>
+                        <h3 className={`${urbanist.className} text-2xl sm:text-3xl font-semibold mb-4`}>
                             Send us your details
                         </h3>
 
@@ -176,6 +184,7 @@ const Careers = () => {
                         <div className="form-wrapper">
                             <div
                                 className="hs-form-frame"
+                                aria-label="Job application form"
                                 data-region="na2"
                                 data-form-id="d7e5b28d-ba9d-4975-8388-01c50f224187"
                                 data-portal-id="245721089"

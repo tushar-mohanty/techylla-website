@@ -10,6 +10,13 @@ const manrope = Manrope({
     weight: ["300", "400", "500", "600", "700", "800"]
 });
 
+import { Urbanist } from 'next/font/google'
+
+const urbanist = Urbanist({
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '600', '700'],
+})
+
 const leaders = [
     {
         name: "Sandip Sanyal",
@@ -20,6 +27,7 @@ const leaders = [
         link: "/thought-leadership/sandip-sanyal",
         caseStudyLink: "/case-studies/story-1",
         role: "CEO, Techylla",
+        showReadMore: true,
     },
     {
         name: "Rajarshi Hore",
@@ -29,23 +37,27 @@ const leaders = [
             "Innovation without direction is noise.\n\n With 20+ years of driving SAP transformations and enterprise-scale innovation, Rajarshi reveals that AI delivers up to 5x faster decision-making—but only when strategy leads the way. Backed by global migrations and real-time analytics at scale, he emphasizes that true success lies in turning AI from a buzzword into a business engine that drives measurable impact.",
         link: "/thought-leadership/leader-two",
         role: "COO, Techylla",
-        // caseStudyLink: "/case-studies/story-1",
+        showReadMore: true,
     },
     {
-        name: "Vivek Pandey",
-        image: "/leader3.jpg",
-        title: "Modern Data Platforms",
+        name: "Bireshwar Das",
+        image: "/Bireshwar-Das.png",
+        title: "Why do organizations still struggle to get real insights from their supply chain data?",
         description:
-            "Modern data platforms are enabling companies to scale analytics and build intelligent data-driven products.",
+            "Because the issue isn’t tools—it’s how data is structured and aligned with business needs. Bireswar believes real value comes from transforming legacy SAP systems into scalable cloud platforms like Azure, AWS, and Snowflake. \n\n He focuses on combining this with analytics using Power BI, Tableau, and ReactJS to turn complex supply chain data into clear, decision-ready insights.",
         link: "/thought-leadership/leader-three",
+        role: "Senior Associate",
+        showReadMore: false,
     },
     {
-        name: "Leader Four",
-        image: "/leader4.jpg",
-        title: "Future of Cloud Transformation",
+        name: "Barsha Patra",
+        image: "/Barsha-Patra1.png",
+        title: "Why do data pipelines still struggle with performance at scale?",
         description:
-            "Cloud transformation is helping companies accelerate digital innovation and operational agility.",
+            "With 3.5+ years of experience, she believes the issue isn’t building pipelines—it’s optimizing them. She works with Snowflake, DBT, and cloud platforms to design efficient, scalable data systems. \n\n Her focus is on speed and reliability—using incremental loading, pushdown optimization, and CI/CD workflows. Her vision is to turn pipelines into high-performance engines for real-time analytics and decision-making.",
         link: "/thought-leadership/leader-four",
+        role: "Software Engineer",
+        showReadMore: false,
     },
     {
         name: "Leader Five",
@@ -54,6 +66,7 @@ const leaders = [
         description:
             "Global engineering teams are reshaping how companies deliver technology solutions at scale.",
         link: "/thought-leadership/leader-five",
+        showReadMore: false,
     },
     {
         name: "Leader Six",
@@ -62,6 +75,7 @@ const leaders = [
         description:
             "Next generation AI platforms are redefining automation and business intelligence.",
         link: "/thought-leadership/leader-six",
+        showReadMore: false,
     },
     {
         name: "Leader Seven",
@@ -70,6 +84,7 @@ const leaders = [
         description:
             "Digital transformation is enabling smarter and more resilient supply chains.",
         link: "/thought-leadership/leader-seven",
+        showReadMore: false,
     },
     {
         name: "Leader Eight",
@@ -78,6 +93,7 @@ const leaders = [
         description:
             "Data engineering is becoming a core pillar for modern AI-driven organizations.",
         link: "/thought-leadership/leader-eight",
+        showReadMore: false,
     },
     {
         name: "Leader Nine",
@@ -86,6 +102,7 @@ const leaders = [
         description:
             "AI-driven product innovation is unlocking new opportunities for enterprises.",
         link: "/thought-leadership/leader-nine",
+        showReadMore: false,
     },
 ];
 
@@ -98,12 +115,17 @@ const ThoughtLeadership = () => {
     const activeLeader = leaders[activeIndex];
 
     return (
-        <section className="min-h-screen bg-blue-100 md:py-20 py-10 overflow-hidden">
-            <div className="max-w-6xl mx-auto px-1 md:px-6">
+        <section className="min-h-screen bg-blue-100 md:py-10 py-10 overflow-hidden">
 
-                <h2 className="text-5xl md:text-6xl md:ml-0 ml-5 font-light tracking-tighter leading-tight mb-16">
+            <div className="max-w-7xl mx-auto px-6">
+
+                <h2 className={`${urbanist.className} md:text-6xl text-5xl font-light tracking-tight leading-tight md:mb-16 mb-12`}>
                     Thought Leadership
                 </h2>
+
+            </div>
+
+            <div className="max-w-6xl mx-auto px-1 md:px-6">
 
                 <div className="grid grid-cols-2 md:grid-cols-2 items-start">
 
@@ -114,38 +136,42 @@ const ThoughtLeadership = () => {
                         <motion.div
                             layout
                             onClick={() => setActiveIndex(nextNextIndex)}
-                            className="relative w-32 h-63 cursor-pointer overflow-hidden rounded-[7px] -ml-14"
-                            whileHover={{ scale: 1.05 }}
+                            className="relative w-32 md:h-110 h-105 cursor-pointer overflow-hidden rounded-[7px] -ml-14"
+                            // whileHover={{ scale: 1.05 }}
                             transition={{ duration: 0.35, ease: "easeOut" }}
                         >
                             <motion.img
                                 key={leaders[nextNextIndex].image}
                                 src={leaders[nextNextIndex].image}
+                                alt={`${leaders[nextNextIndex].name} portrait`}
                                 className="w-full h-full object-cover opacity-70"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 0.8 }}
                                 transition={{ duration: 0.4 }}
+                                whileHover={{ scale: 1.05 }}
                             />
-                            
+
                         </motion.div>
 
                         {/* Small Image 2 */}
                         <motion.div
                             layout
                             onClick={() => setActiveIndex(nextIndex)}
-                            className="relative w-40 h-63 cursor-pointer overflow-hidden rounded-[7px]"
-                            whileHover={{ scale: 1.03 }}
+                            className="relative w-40 md:h-110 h-105 cursor-pointer overflow-hidden rounded-[7px]"
+                            // whileHover={{ scale: 1.03 }}
                             transition={{ duration: 0.35 }}
                         >
                             <motion.img
                                 key={leaders[nextIndex].image}
                                 src={leaders[nextIndex].image}
+                                alt={`${leaders[nextIndex].name} portrait`}
                                 className="w-full h-full object-cover opacity-85"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 0.9 }}
                                 transition={{ duration: 0.4 }}
+                                whileHover={{ scale: 1.03 }}
                             />
-                            
+
                         </motion.div>
 
                         {/* BIG IMAGE */}
@@ -158,6 +184,7 @@ const ThoughtLeadership = () => {
                                 <motion.img
                                     key={activeLeader.image}
                                     src={activeLeader.image}
+                                    alt={`${activeLeader.name}, ${activeLeader.role || "Team member"}`}
                                     className="w-full h-full object-cover"
                                     initial={{ opacity: 0, scale: 1.05 }}
                                     animate={{ opacity: 1, scale: 1 }}
@@ -172,17 +199,17 @@ const ThoughtLeadership = () => {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4 }}
-                                className={`${manrope.className} absolute bottom-2 left-1 md:left-4 text-white text-2xl md:text-3xl font-normal`}
+                                className={`${urbanist.className} absolute bottom-2 left-1 md:left-4 text-white text-2xl md:text-3xl font-normal`}
                             >
                                 {activeLeader.name} <br></br>
-                                
+
                                 {activeLeader.role && (
-                                <span className={`${manrope.className} text-lg md:text-xl leading-tight font-normal text-white`}>
-                                    {activeLeader.role}
-                                </span>
-                            )}
+                                    <span className={`${urbanist.className} text-lg md:text-xl leading-tight font-normal text-white`}>
+                                        {activeLeader.role}
+                                    </span>
+                                )}
                             </motion.p>
-                            
+
                         </motion.div>
 
                     </div>
@@ -200,32 +227,34 @@ const ThoughtLeadership = () => {
                                 transition={{ duration: 0.45, ease: "easeOut" }}
                             >
 
-                                <h3 className={`${manrope.className} text-xl md:text-3xl text-[#1368B6] font-normal leading-tight`}>
+                                <h3 className={`${urbanist.className} text-xl md:text-3xl text-[#1368B6] font-normal leading-tight`}>
                                     {activeLeader.title}
                                 </h3>
 
-                                <p className={`${manrope.className} text-[10px] md:text-[18px] text-gray-700 mt-5 leading-relaxed whitespace-pre-line`}>
+                                <p className={`${urbanist.className} text-[10px] md:text-[18px] text-gray-700 mt-5 leading-relaxed whitespace-pre-line`}>
                                     {activeLeader.description}
                                 </p>
 
                                 <div className="flex flex-col md:flex-row items-start md:items-center gap-3 mt-2 md:mt-8">
 
                                     {/* READ MORE */}
-                                    <Link href={activeLeader.link}>
-                                        <motion.button
-                                            whileTap={{ scale: 0.95 }}
-                                            className={`${manrope.className} bg-black text-white px-3 py-2 md:px-7 md:py-2 font-semibold tracking-widest text-[10px] md:text-[15px] border-b border-transparent hover:bg-blue-100 hover:text-black hover:border-black duration-500 cursor-pointer whitespace-nowrap`}
-                                        >
-                                            READ MORE
-                                        </motion.button>
-                                    </Link>
+                                    {activeLeader.showReadMore && (
+                                        <Link href={activeLeader.link}>
+                                            <motion.button
+                                                whileTap={{ scale: 0.95 }}
+                                                className={`${urbanist.className} bg-black text-white px-3 py-2 md:px-7 md:py-2 font-semibold tracking-widest text-[10px] md:text-[15px] border-b border-transparent hover:bg-blue-100 hover:text-black hover:border-black duration-500 cursor-pointer whitespace-nowrap`}
+                                            >
+                                                READ MORE
+                                            </motion.button>
+                                        </Link>
+                                    )}
 
                                     {/* CASE STUDY */}
                                     {activeLeader.caseStudyLink && (
                                         <Link href={activeLeader.caseStudyLink}>
                                             <motion.button
                                                 whileTap={{ scale: 0.95 }}
-                                                className={`${manrope.className} bg-black md:bg-transparent text-white md:text-black px-1 py-2 md:px-7 md:py-2 font-semibold tracking-tight text-[10px] md:text-[15px] border border-black hover:bg-black hover:text-white duration-500 cursor-pointer whitespace-nowrap`}
+                                                className={`${urbanist.className} bg-black md:bg-transparent text-white md:text-black px-1 py-2 md:px-7 md:py-2 font-semibold tracking-tight text-[10px] md:text-[15px] border border-black hover:bg-black hover:text-white duration-500 cursor-pointer whitespace-nowrap`}
                                             >
                                                 Review the Tariff Simulation Model
                                             </motion.button>

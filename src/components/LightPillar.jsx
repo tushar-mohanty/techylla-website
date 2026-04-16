@@ -44,6 +44,25 @@ const LightPillar = ({
     const width = container.clientWidth;
     const height = container.clientHeight;
 
+    let isVisible = true;
+    let isTabActive = true;
+
+    // ✅ ADD HERE (perfect spot)
+
+
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+    });
+
+    observer.observe(container);
+
+    // ✅ ADD TAB VISIBILITY LISTENER HERE
+    const handleVisibilityChange = () => {
+      isTabActive = !document.hidden;
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     // Scene setup
     const scene = new THREE.Scene();
     sceneRef.current = scene;
@@ -61,7 +80,7 @@ const LightPillar = ({
       low: { iterations: 24, waveIterations: 1, pixelRatio: 0.5, precision: 'mediump', stepMultiplier: 1.5 },
       medium: { iterations: 40, waveIterations: 2, pixelRatio: 0.65, precision: 'mediump', stepMultiplier: 1.2 },
       high: {
-        iterations: 80,
+        iterations: 50,
         waveIterations: 4,
         pixelRatio: Math.min(window.devicePixelRatio, 2),
         precision: 'highp',
@@ -251,6 +270,12 @@ const LightPillar = ({
     const animate = currentTime => {
       if (!materialRef.current || !rendererRef.current || !sceneRef.current || !cameraRef.current) return;
 
+      // ✅ ADD THIS BLOCK HERE (exact spot)
+      if (!isVisible || !isTabActive) {
+        rafRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
       const deltaTime = currentTime - lastTime;
 
       if (deltaTime >= frameTime) {
@@ -285,6 +310,11 @@ const LightPillar = ({
     window.addEventListener('resize', handleResize, { passive: true });
 
     return () => {
+
+      // ✅ ADD THESE TWO LINES HERE (TOP)
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+
       window.removeEventListener('resize', handleResize);
       if (interactive) {
         container.removeEventListener('mousemove', handleMouseMove);
@@ -379,7 +409,7 @@ const LightPillar = ({
       <div
         className={`w-full h-full absolute top-0 left-0 flex items-center justify-center bg-black/10 text-gray-500 text-sm ${className}`}
         style={{ mixBlendMode }}>WebGL not supported
-              </div>
+      </div>
     );
   }
 

@@ -9,6 +9,13 @@ const manrope = Manrope({
     weight: ["300", "400", "500", "600", "700", "800"]
 });
 
+import { Urbanist } from 'next/font/google'
+
+const urbanist = Urbanist({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+})
+
 const partners = [
   { name: "AWS", logo: "/aws.svg", width: "w-40", height: "h-20" },
   { name: "Databricks", logo: "/databricks.png", width: "w-60", height: "h-25" },
@@ -20,16 +27,15 @@ const Partnerships = () => {
   return (
     <section className="min-h-screen bg-blue-100 md:py-20 py-10 overflow-hidden">
 
-      <div className="max-w-6xl mx-auto px-6">
+      <div className={`${urbanist.className} max-w-7xl mx-auto px-6`}>
 
         {/* Heading */}
-        <h2 className={`${manrope.className} md:text-6xl text-5xl font-light tracking-normal leading-tight mb-4`}>
+        <h2 className={`${urbanist.className} md:text-6xl text-5xl font-light tracking-tight leading-tight mb-4`}>
           Core Competence
         </h2>
 
         <p className="text-sm md:text-[19px] text-black max-w-xl mb-10">
-          These strategic partners support our mission of transforming
-          your business to excel in the digital world.
+          These core capabilities support our mission of transforming your business to excel in the digital world.
         </p>
 
         {/* Learn More */}

@@ -12,6 +12,13 @@ const manrope = Manrope({
     weight: ["300", "400", "500", "600", "700", "800"]
 });
 
+import { Urbanist } from 'next/font/google'
+
+const urbanist = Urbanist({
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '600', '700'],
+})
+
 const Silk = dynamic(() => import("@/components/Silk"), {
     ssr: false,
 });
@@ -69,6 +76,7 @@ export default function Hero() {
 
     return (
         <section
+            aria-label={`Hero section: ${heroSlides[active].title}`}
             className="relative min-h-screen overflow-hidden bg-black"
         >
             {/* Dark overlay */}
@@ -76,9 +84,9 @@ export default function Hero() {
             <motion.div
                 key={active}
                 className="absolute inset-0 z-0 bg-black/50"
-                initial={{ scale: 1.2, opacity: 0 }}
+                initial={{ scale: 1, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.2, ease: "easeInOut" }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
             >
                 {active === 0 && (
                     <FloatingLines
@@ -90,6 +98,7 @@ export default function Hero() {
                         bendRadius={10}
                         bendStrength={0.9}
                         linesGradient={["#2563eb", "#38bdf8", "#ffffff", "#F917FC"]}
+                        parallax={false} // ✅ added
                     />
                 )}
                 {active === 1 && (
@@ -154,24 +163,30 @@ export default function Hero() {
                     className="relative z-10 max-w-7xl mx-auto px-6 pt-40 text-white"
                 >
 
-                    
+                    {/* ✅ ADD HERE */}
+                    <p className="sr-only" aria-live="polite">
+                        {heroSlides[active].title}
+                    </p>
+
+
 
                     <BlurText
                         key={`title-${active}`}
                         text={heroSlides[active].title}
-                        delay={50}
+                        delay={40}
                         animateBy="words"
                         direction="top"
-                        className={`${manrope.className} text-4xl md:text-6xl font-normal max-w-2xl md:mt-0 mt-40 leading-tight`}
+                        className={`${urbanist.className} text-4xl md:text-6xl font-normal max-w-3xl md:mt-25 mt-40 leading-tight`}
                     />
 
                     <Link href={heroSlides[active].link}>
                         <motion.button
                             key={`btn-${active}`}
+                            aria-label={`Explore ${heroSlides[active].title}`}
                             initial={{ opacity: 0 }}
-                            animate={{ opacity: 1}}
+                            animate={{ opacity: 1 }}
                             transition={{ delay: 0.8, duration: 0.5, ease: "easeInOut" }}
-                            className={`${manrope.className} mt-8 bg-red-600 px-3 py-2 md:px-6 md:py-3 rounded-md text-md hover:bg-red-700 transition font-normal`}
+                            className={`${urbanist.className} mt-8 bg-red-600/80 px-3 py-2 md:px-7 md:py-3 rounded-md text-md hover:bg-red-700 transition font-normal`}
                         >
                             Explore services
                         </motion.button>
@@ -181,14 +196,15 @@ export default function Hero() {
             </AnimatePresence>
 
             {/* Bottom Tabs */}
-            <div className="absolute bottom-0 w-full px-5 sm:px-6 pb-6 sm:pb-10">
+            <div className="hidden absolute bottom-0 w-full px-5 sm:px-6 pb-6 sm:pb-10">
+                {/* added hidden here */}
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
 
                     {heroSlides.map((slide, index) => (
                         <button
                             key={index}
                             onClick={() => setActive(index)}
-                            className={`${manrope.className} relative text-left p-6 bg-black/40 text-white rounded-sm backdrop-blur border border-white/5 transition
+                            className={`${urbanist.className} relative text-left p-6 bg-black/40 text-white rounded-sm backdrop-blur border border-white/5 transition
               ${active === index ? "block" : "hidden md:block"}`}
                         >
                             {slide.tab}

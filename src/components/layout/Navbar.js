@@ -5,12 +5,18 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Manrope } from "next/font/google";
+import { Urbanist } from 'next/font/google';
 import { Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
 const manrope = Manrope({
     subsets: ["latin"],
     weight: ["300", "400", "500", "600", "700", "800"]
+});
+
+const urbanist = Urbanist({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
 });
 import {
     Dialog,
@@ -52,7 +58,7 @@ const serviceSolution = [
     {
         name: 'Data & Cloud',
         description: 'Data-driven cloud solutions',
-        href: '#',
+        href: '/services/data-cloud',
         icon: CpuChipIcon,
         children: [
             { name: 'Data Engineering', href: '#' },
@@ -69,11 +75,11 @@ const serviceSolution = [
     {
         name: 'Artificial Intelligence',
         description: 'Advanced AI solutions',
-        href: '#',
+        href: '/services/artificial-intelligence',
         icon: SparklesIcon,
         children: [
-            { name: 'Generative AI', href: '#' },
-            { name: 'AI Managed Services', href: '#' }
+            // { name: 'Generative AI', href: '#' },
+            // { name: 'AI Managed Services', href: '#' }
         ]
     }
 ];
@@ -118,17 +124,17 @@ export default function Navbar() {
 
     return (
         <header
-            className={`fixed top-0 w-full bg-black/10 backdrop-blur-md z-50 transition-transform duration-500 ease-in-out will-change-transform ${showNavbar ? "translate-y-0" : "-translate-y-full"
+            className={`fixed top-0 w-full bg-black/50 backdrop-blur-md z-50 transition-transform duration-500 ease-in-out will-change-transform ${showNavbar ? "translate-y-0" : "-translate-y-full"
                 }`}
         >
-            <nav aria-label="Global" className={`mx-auto flex w-full items-center justify-between p-4 lg:px-1 ${isHome ? "bg-transparent text-white" : "bg-black text-white"
+            <nav aria-label="Global" className={`mx-auto flex w-full items-center justify-between p-5 lg:px-1 ${isHome ? "bg-transparent text-white" : "bg-black text-white"
                 }`}>
                 <div className="flex ">
-                    <a href="/" className="text-3xl font-semibold text-white md:ml-40">
+                    <a href="/" className="text-3xl font-semibold text-white md:ml-20">
 
 
                         <img
-                            alt=""
+                            alt="Techylla company logo"
                             src="/Techylla-Logo.png"
                             className="h-11 w-auto"
                         />
@@ -151,7 +157,7 @@ export default function Navbar() {
                         onMouseLeave={() => setOpenMenu(null)}
                     >
                         <div className="absolute top-full left-0 right-0 h-6 bg-transparent"></div>
-                        <PopoverButton className={`${manrope.className} relative flex items-center gap-x-1 text-[18px] font-normal text-white transition w-full cursor-pointer focus:outline-none`}>
+                        <PopoverButton className={`${urbanist.className} relative flex items-center gap-x-1 text-[18px] font-normal text-white transition w-full cursor-pointer focus:outline-none`}>
                             Services & Solutions
                             <ChevronDownIcon
                                 className={`size-5 text-white transition-transform duration-200 group-hover:text-blue-600 ${openMenu === "service" ? "rotate-180" : ""
@@ -171,41 +177,41 @@ export default function Navbar() {
                                     exit={{ opacity: 0, y: 15 }}
 
                                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                    className={`${manrope.className} absolute left-1/2 z-10 mt-5 w-screen max-w-lg -translate-x-1/2 rounded-3xl bg-white shadow-lg`}
+                                    className={`${urbanist.className} absolute left-1/2 z-10 mt-5 w-screen max-w-xs -translate-x-1/2 rounded-sm bg-white shadow-lg`}
                                 >
                                     <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
-                                    <div className="p-4">
+                                    <div className="p-2">
                                         {serviceSolution.map((item) => (
                                             <div
                                                 key={item.name}
                                                 onMouseEnter={() => setActiveSubMenu(item.name)}
                                                 onMouseLeave={() => setActiveSubMenu(null)}
-                                                className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/5 hover:bg-blue-50"
+                                                className="group relative flex items-center gap-x-2 rounded-sm p-2 text-sm/5 hover:bg-blue-50"
                                             >
-                                                <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                                    <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-indigo-600" />
-                                                </div>
+                                                {/* <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                                                     <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-indigo-600" /> 
+                                                </div> */}
                                                 <div className="flex-auto">
                                                     <a href={item.href} className="block font-normal text-gray-900 text-lg">
                                                         {item.name}
                                                         <span className="absolute inset-0" />
                                                     </a>
-                                                    <p className="mt-1 text-gray-600">{item.description}</p>
+                                                    {/* <p className="mt-1 text-gray-600">{item.description}</p> */}
                                                 </div>
-                                                <ArrowRightIcon className="size-6 text-blue-400" />
+                                                
 
                                                 {/* invisible hover bridge */}
                                                 <div className="absolute top-0 left-full w-4 h-full"></div>
 
                                                 {/* 🔥 ADD THIS HERE (INSIDE SAME DIV, AT END) */}
                                                 {item.children.length > 0 && activeSubMenu === item.name && (
-                                                    <div className={`${manrope.className} text-lg text-black absolute top-0 left-full ml-4 w-88 bg-white rounded-xl shadow-lg border z-50`}>
-                                                        <div className="p-3">
+                                                    <div className={`${urbanist.className} text-lg text-black absolute top-0 left-full ml-4 w-88 bg-white rounded-sm shadow-lg border z-50`}>
+                                                        <div className="p-2">
                                                             {item.children.map((subItem) => (
                                                                 <a
                                                                     key={subItem.name}
                                                                     href={subItem.href}
-                                                                    className="block px-3 py-2 hover:bg-blue-50 rounded cursor-pointer"
+                                                                    className="block px-3 py-2 hover:bg-blue-50 rounded-sm cursor-pointer"
                                                                 >
                                                                     {subItem.name}
                                                                 </a>
@@ -230,7 +236,7 @@ export default function Navbar() {
                         onMouseLeave={() => setOpenMenu(null)}
                     >
                         <div className="absolute top-full left-0 right-0 h-6 bg-transparent"></div>
-                        <PopoverButton className={`${manrope.className} relative flex items-center gap-x-1 text-[18px] font-normal text-white transition w-full cursor-pointer focus:outline-none`}>
+                        <PopoverButton className={`${urbanist.className} relative flex items-center gap-x-1 text-[18px] font-normal text-white transition w-full cursor-pointer focus:outline-none`}>
                             Knowledge Center
                             <ChevronDownIcon
                                 className={`size-5 text-white transition-transform duration-200 group-hover:text-blue-600 ${openMenu === "knowledge" ? "rotate-180" : ""
@@ -251,24 +257,24 @@ export default function Navbar() {
                                     exit={{ opacity: 0, y: 15 }}
 
                                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                    className={`${manrope.className} absolute left-1/2 z-10 mt-5 w-screen max-w-lg -translate-x-1/2 rounded-3xl bg-white shadow-lg`}
+                                    className={`${urbanist.className} absolute left-1/2 z-10 mt-5 w-screen max-w-xs -translate-x-1/2 rounded-sm bg-white shadow-lg`}
                                 >
                                     <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
-                                    <div className="p-4">
+                                    <div className="p-2">
                                         {knowledgeCenter.map((item) => (
                                             <div
                                                 key={item.name}
-                                                className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/5 hover:bg-blue-50"
+                                                className="group relative flex items-center gap-x-2 rounded-sm p-2 text-sm/5 hover:bg-blue-50"
                                             >
-                                                <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                                                {/* <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                                     <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-indigo-600" />
-                                                </div>
+                                                </div> */}
                                                 <div className="flex-auto">
                                                     <a href={item.href} className="block font-normal text-gray-900 text-lg">
                                                         {item.name}
                                                         <span className="absolute inset-0" />
                                                     </a>
-                                                    <p className="mt-1 text-gray-600">{item.description}</p>
+                                                    {/* <p className="mt-1 text-gray-600">{item.description}</p> */}
                                                 </div>
                                                 {/* <ArrowRightIcon className="size-6 text-blue-400" /> */}
                                             </div>
@@ -286,7 +292,7 @@ export default function Navbar() {
                         onMouseLeave={() => setOpenMenu(null)}
                     >
                         <div className="absolute top-full left-0 right-0 h-6 bg-transparent"></div>
-                        <PopoverButton className={`${manrope.className} relative flex items-center gap-x-1 text-[18px] font-normal text-white transition w-full cursor-pointer focus:outline-none`}>
+                        <PopoverButton className={`${urbanist.className} relative flex items-center gap-x-1 text-[18px] font-normal text-white transition w-full cursor-pointer focus:outline-none`}>
                             Industry
                             <ChevronDownIcon
                                 className={`size-5 text-white transition-transform duration-200 group-hover:text-blue-600 ${openMenu === "industry" ? "rotate-180" : ""
@@ -306,24 +312,24 @@ export default function Navbar() {
                                     exit={{ opacity: 0, y: 15 }}
 
                                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                    className={`${manrope.className} absolute left-1/2 z-10 mt-5 w-screen max-w-lg -translate-x-1/2 rounded-3xl bg-white shadow-lg`}
+                                    className={`${urbanist.className} absolute left-1/2 z-10 mt-5 w-screen max-w-xs -translate-x-1/2 rounded-sm bg-white shadow-lg`}
                                 >
                                     <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
-                                    <div className="p-4">
+                                    <div className="p-2">
                                         {industry.map((item) => (
                                             <div
                                                 key={item.name}
-                                                className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/5 hover:bg-blue-50"
+                                                className="group relative flex items-center gap-x-2 rounded-sm p-2 text-sm/5 hover:bg-blue-50"
                                             >
-                                                <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                                                {/* <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                                     <item.icon aria-hidden="true" className="size-6 text-gray-600 group-hover:text-indigo-600" />
-                                                </div>
+                                                </div> */}
                                                 <div className="flex-auto">
                                                     <a href={item.href} className="block font-normal text-gray-900 text-lg">
                                                         {item.name}
                                                         <span className="absolute inset-0" />
                                                     </a>
-                                                    <p className="mt-1 text-gray-600">{item.description}</p>
+                                                    {/* <p className="mt-1 text-gray-600">{item.description}</p> */}
                                                 </div>
                                                 {/* <ArrowRightIcon className="size-6 text-blue-400" /> */}
                                             </div>
@@ -337,7 +343,7 @@ export default function Navbar() {
                 </PopoverGroup>
 
                 <Link href="/about" className="hidden lg:inline-block relative group">
-                    <button className={`${manrope.className} ml-6 hover:text-blue-200 font-normal text-white transition-all duration-300 cursor-pointer relative flex items-center gap-x-1 text-[18px]`}>
+                    <button className={`${urbanist.className} ml-6 hover:text-blue-200 font-normal text-white transition-all duration-300 cursor-pointer relative flex items-center gap-x-1 text-[18px]`}>
                         About Us
 
                         <span
@@ -350,7 +356,7 @@ export default function Navbar() {
                 </Link>
 
                 <Link href="/careers" className="hidden lg:inline-block relative group">
-                    <button className={`${manrope.className} ml-7 hover:text-blue-200 font-normal text-white transition-all duration-300 cursor-pointer relative flex items-center gap-x-1 text-[18px]`}>
+                    <button className={`${urbanist.className} ml-7 hover:text-blue-200 font-normal text-white transition-all duration-300 cursor-pointer relative flex items-center gap-x-1 text-[18px]`}>
                         Careers
 
                         <span
@@ -362,7 +368,7 @@ export default function Navbar() {
 
                 </Link>
                 <Link href="/contact" className="hidden lg:inline-block">
-                    <button className={`${manrope.className} ml-3 rounded-2xl hover:text-white text-[18px] hover:bg-blue-800 px-4 py-2 font-normal text-white transition-all duration-300 cursor-pointer`}>
+                    <button className={`${urbanist.className} ml-3 rounded-2xl hover:text-white text-[18px] hover:bg-blue-800 px-4 py-2 font-normal text-white transition-all duration-300 cursor-pointer`}>
                         Contact Us
                     </button>
                 </Link>
@@ -396,7 +402,7 @@ export default function Navbar() {
                                 <a href="/" className="text-3xl font-bold text-gray-900">
 
                                     <img
-                                        alt=""
+                                        alt="Techylla company logo"
                                         src="/Techylla-Logo.png"
                                         className="h-10 w-auto -ml-3"
                                     />
@@ -414,11 +420,11 @@ export default function Navbar() {
                                 <div className="-my-6 ">
                                     <div className="space-y-2 py-6">
                                         <Disclosure as="div" className="-mx-3">
-                                            <DisclosureButton className={`${manrope.className} group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50`}>
+                                            <DisclosureButton className={`${urbanist.className} group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50`}>
                                                 Services & Solutions
                                                 <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
                                             </DisclosureButton>
-                                            <DisclosurePanel className={`${manrope.className} mt-2 space-y-2`}>
+                                            <DisclosurePanel className={`${urbanist.className} mt-2 space-y-2`}>
                                                 {[...serviceSolution,].map((item) => (
                                                     <div key={item.name}>
 
@@ -463,11 +469,11 @@ export default function Navbar() {
 
 
                                         <Disclosure as="div" className="-mx-3">
-                                            <DisclosureButton className={`${manrope.className} group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50`}>
+                                            <DisclosureButton className={`${urbanist.className} group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50`}>
                                                 Knowledge Center
                                                 <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
                                             </DisclosureButton>
-                                            <DisclosurePanel className={`${manrope.className} mt-2 space-y-2`}>
+                                            <DisclosurePanel className={`${urbanist.className} mt-2 space-y-2`}>
                                                 {[...knowledgeCenter,].map((item) => (
                                                     <DisclosureButton
                                                         key={item.name}
@@ -481,11 +487,11 @@ export default function Navbar() {
                                             </DisclosurePanel>
                                         </Disclosure>
                                         <Disclosure as="div" className="-mx-3">
-                                            <DisclosureButton className={`${manrope.className} group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50`}>
+                                            <DisclosureButton className={`${urbanist.className} group flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:bg-gray-50`}>
                                                 Industry
                                                 <ChevronDownIcon aria-hidden="true" className="size-5 flex-none group-data-open:rotate-180" />
                                             </DisclosureButton>
-                                            <DisclosurePanel className={`${manrope.className} mt-2 space-y-2`}>
+                                            <DisclosurePanel className={`${urbanist.className} mt-2 space-y-2`}>
                                                 {[...industry,].map((item) => (
                                                     <DisclosureButton
                                                         key={item.name}
@@ -505,7 +511,7 @@ export default function Navbar() {
                                     <div className="py-4 -mt-5">
                                         <Link
                                             href="/about"
-                                            className={`${manrope.className}  text-black font-semibold transition`}
+                                            className={`${urbanist.className}  text-black font-semibold transition`}
                                         >
                                             About Us
                                         </Link>
@@ -513,7 +519,7 @@ export default function Navbar() {
                                     <div className="py-4">
                                         <Link
                                             href="/careers"
-                                            className={`${manrope.className}  text-black font-semibold transition`}
+                                            className={`${urbanist.className}  text-black font-semibold transition`}
                                         >
                                             Careers
                                         </Link>
@@ -521,7 +527,7 @@ export default function Navbar() {
                                     <div className="py-6">
                                         <Link
                                             href="/contact"
-                                            className={`${manrope.className} bg-blue-600 text-white px-3 py-2 rounded-lg font-medium hover:bg-blue-700 transition`}
+                                            className={`${urbanist.className} bg-blue-600 text-white px-3 py-2 rounded-lg font-medium hover:bg-blue-700 transition`}
                                         >
                                             Contact Us
                                         </Link>

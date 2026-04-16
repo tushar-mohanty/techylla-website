@@ -7,10 +7,17 @@ const manrope = Manrope({
     weight: ["300", "400", "500", "600", "700", "800"]
 });
 
+import { Urbanist } from 'next/font/google'
+
+const urbanist = Urbanist({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+})
+
 
 export default function SandipStory() {
     return (
-        <section className="relative bg-gradient-to-r from-blue-100 via-white to-blue-200 w-full overflow-hidden">
+        <section className={`${urbanist.className} relative bg-gradient-to-r from-blue-100 via-white to-blue-200 w-full overflow-hidden`}>
             <div className="hidden md:block absolute right-10 top-[140] w-[300] group overflow-hidden rounded-[16px]">
 
                 {/* IMAGE */}
@@ -26,10 +33,10 @@ export default function SandipStory() {
                 {/* OVERLAY */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out flex items-end p-4 ">
 
-                    <p className={`${manrope.className} text-white text-lg font-normal`}>
-                        <span className={`${manrope.className} -mb-9 block text-white text-[15px] font-normal`}>by</span>
+                    <p className={`${urbanist.className} text-white text-lg font-normal`}>
+                        <span className={`${urbanist.className} -mb-9 block text-white text-[15px] font-normal`}>by</span>
                         <br />
-                        <span className={`${manrope.className} -mb-8 block text-white text-[25px] font-normal`}>Sandip Sanyal</span>
+                        <span className={`${urbanist.className} -mb-8 block text-white text-[25px] font-normal`}>Sandip Sanyal</span>
                         <br />
                         CEO, Techylla
                     </p>
@@ -39,11 +46,11 @@ export default function SandipStory() {
             </div>
             <div className="max-w-6xl mx-auto px-6 py-25 md:py-30 md:ml-6 ml-0 ">
 
-                <h1 className={`${manrope.className} md:font-normal font-bold text-black md:mb-10 mb-5 md:text-6xl text-2xl`}>
+                <h1 className={`${urbanist.className} md:font-normal font-bold text-black md:mb-10 mb-5 md:text-6xl text-2xl`}>
                     The End of Static Trade: Engineering Margin Defense in a Fragmented World
                 </h1>
 
-                <h2 className={`${manrope.className} md:text-3xl text-xl mb-3 font-semibold`}>The Macro Reality </h2>
+                <h2 className={`${urbanist.className} md:text-3xl text-xl mb-3 font-semibold`}>The Macro Reality </h2>
 
                 <p className="md:text-lg text-sm text-gray-700 mb-8">
                     The era of predictable global trade is over. As supply chains decouple, tariffs have become volatile variables that can erase a year’s margin in a single trading day. Relying on legacy spreadsheets is a high-risk strategy that fails the "clean books" test.
@@ -51,9 +58,9 @@ export default function SandipStory() {
 
                 </p>
 
-                <h2 className={`${manrope.className} md:text-3xl text-xl mb-3 font-semibold mt-3`}>The Solution: Data & AI Engineering as a Hedge </h2>
+                <h2 className={`${urbanist.className} md:text-3xl text-xl mb-3 font-semibold mt-3`}>The Solution: Data & AI Engineering as a Hedge </h2>
 
-                <p className={`${manrope.className} md:text-lg text-sm text-gray-700 mb-8`}>
+                <p className={`${urbanist.className} md:text-lg text-sm text-gray-700 mb-8`}>
                     We don't "predict" the future; we build the <span className="text-gray-900 font-semibold"> picks and shovels</span> to navigate it. Our AI engineering framework integrates your enterprise financial data with real-time global trade feeds to create a <span className="text-gray-900 font-semibold"> Living Tariff Model</span>.
                     <br />
                     <br />
@@ -72,7 +79,7 @@ export default function SandipStory() {
 
                 </p>
 
-                <h2 className={`${manrope.className} md:text-3xl text-xl mb-3 font-semibold mt-4`}>The Business Value </h2>
+                <h2 className={`${urbanist.className} md:text-3xl text-xl mb-3 font-semibold mt-4`}>The Business Value </h2>
 
                 <p className="mb-6 md:text-lg text-sm text-gray-700">
                     In a world of shifting rules, the winner is the one with the cleanest data and the fastest simulation engine. We provide the automated logic that turns global volatility into a calculated operational cost.
@@ -95,7 +102,7 @@ export default function SandipStory() {
 
                     />
                     <div className="absolute inset-0 md:hidden bg-gradient-to-t from-black/80 via-black/10 to-transparent flex px-4 pb-5 items-end rounded-sm">
-                        <p className={`${manrope.className} text-white text-sm font-normal`}>
+                        <p className={`${urbanist.className} text-white text-sm font-normal`}>
                             <span className="block text-[15px]">by</span>
                             <span className="block text-[25px]">Sandip Sanyal</span>
                             <span className="block text-[20px]">CEO, Techylla</span>

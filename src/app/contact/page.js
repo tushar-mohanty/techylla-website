@@ -10,6 +10,13 @@ const manrope = Manrope({
   weight: ["300", "400", "500", "600", "700", "800"]
 });
 
+import { Urbanist } from 'next/font/google'
+
+const urbanist = Urbanist({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+})
+
 
 const ContactPage = () => {
 
@@ -17,11 +24,12 @@ const ContactPage = () => {
   return (
 
     <div className="w-full overflow-x-hidden">
-      <section className="relative bg-white py-20 min-h-screen overflow-hidden">
+      <section aria-label="Contact page introduction" className="relative bg-white py-20 min-h-screen overflow-hidden">
 
         <div className="absolute inset-0 z-0">
           <img
-            src="/Contact-Us-Image.png"
+            src="/Contact-Us.png"
+            alt="Contact Us Background Image"
             className="w-full h-full object-cover"
           />
 
@@ -36,7 +44,7 @@ const ContactPage = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className={`${manrope.className} text-6xl md:text-7xl font-semibold text-white tracking-tighter leading-tight mb-4 mt-60 md:mt-60`}
+            className={`${urbanist.className} text-6xl md:text-7xl font-semibold text-white tracking-tight leading-tight mb-4 mt-60 md:mt-60`}
           >
             Contact <span className="text-blue-300 font-semibold">Us</span>
           </motion.h2>
@@ -45,7 +53,7 @@ const ContactPage = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-            className={`${manrope.className} text-md md:text-4xl font-light text-white tracking-wide leading-10 mb-20`}
+            className={`${urbanist.className} text-md md:text-4xl font-light text-white tracking-wide leading-10 mb-20`}
           >
             Let’s Build Something Great Together
           </motion.h2>
@@ -54,15 +62,17 @@ const ContactPage = () => {
 
       </section >
 
-      <section className="relative bg-gradient-to-br from-blue-100 via-white to-blue-100 px-6 md:px-12 overflow-hidden min-h-screen">
+      <section aria-label="Contact form section" className="relative bg-gradient-to-br from-blue-100 via-white to-blue-100 px-6 md:px-12 overflow-hidden min-h-screen">
 
         {/* Background Pattern */}
         <img
           src="/Bg Network Pattern.png"
+          alt=""
           className="absolute -top-50 -left-60 w-[500] rotate-350 opacity-30 pointer-events-none select-none"
         />
         <img
           src="/Bg Network Pattern.png"
+          alt=""
           className="absolute -bottom-55 -right-40 w-[600] rotate-340 opacity-20 pointer-events-none select-none"
         />
 
@@ -75,11 +85,11 @@ const ContactPage = () => {
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            <h2 className={`${manrope.className} text-5xl font-semibold text-black leading-tight mb-6 mt-10`}>
+            <h2 className={`${urbanist.className} text-5xl font-semibold text-black leading-tight mb-6 mt-10`}>
               Have an Idea? Let’s Build It <span className="text-blue-800 font-bold">Together</span> 
             </h2>
 
-            <p className={`${manrope.className} text-gray-800 text-xl max-w-[700]`}>
+            <p className={`${urbanist.className} text-gray-800 text-xl max-w-[700]`}>
               From concept to reality, we make it happen.
             </p>
           </motion.div>
@@ -87,7 +97,7 @@ const ContactPage = () => {
           {/* RIGHT SIDE FORM */}
           <div className="relative mt-10 p-6 sm:p-8 rounded-xl shadow-lg bg-white overflow-hidden">
 
-            <h3 className={`${manrope.className} text-2xl sm:text-3xl font-semibold mb-4`}>
+            <h3 className={`${urbanist.className} text-2xl sm:text-3xl font-semibold mb-4`}>
               Send us your details
             </h3>
 
@@ -101,6 +111,7 @@ const ContactPage = () => {
             <div className="form-wrapper">
               <div
                 className="hs-form-frame"
+                aria-label="Contact form"
                 data-region="na2"
                 data-form-id="2d512c76-1898-499f-a646-13ff510d1f49"
                 data-portal-id="245721089"
@@ -116,7 +127,7 @@ const ContactPage = () => {
         </div>
       </section>
 
-      <section className="relative bg-gradient-to-br from-pink-100 via-blue-100 to-pink-100 px-6 md:px-12 min-h-[500] overflow-hidden">
+      <section ria-label="Company contact information" className="relative bg-gradient-to-br from-pink-100 via-blue-100 to-pink-100 px-6 md:px-12 min-h-[500] overflow-hidden">
         <img
           src="/Bg Network Pattern.png"
           className="absolute -top-50 -left-60 w-[500] rotate-350 opacity-30 pointer-events-none select-none"
@@ -138,7 +149,7 @@ const ContactPage = () => {
 
             {/* Overlay Text */}
             <div className="absolute ml-0 md:-ml-5">
-              <h2 className={`${manrope.className} text-black text-6xl font-light`}>
+              <h2 className={`${urbanist.className} text-black text-6xl font-light`}>
                 Reach Out To <span className="text-blue-800 font-medium">Techylla</span>
               </h2>
             </div>
@@ -151,7 +162,7 @@ const ContactPage = () => {
             <div className="flex items-start gap-4">
               <MapPin className="text-orange-500 w-8 h-8 mt-1" />
 
-              <div className={`${manrope.className} space-y-3 text-blue-900 font-bold text-lg`}>
+              <div className={`${urbanist.className} space-y-3 text-blue-900 font-bold text-lg`}>
                 <p>Kolkata, India</p>
                 <p>116 Village Blvd Suite 200, Princeton, NJ 08540</p>
 
@@ -161,14 +172,14 @@ const ContactPage = () => {
             {/* EMAIL */}
             <div className="flex items-center gap-4">
               <Mail className="text-orange-500 w-8 h-8" />
-              <p className={`${manrope.className} text-blue-900 font-bold text-lg`}>sales@techylla.com</p>
+              <p className={`${urbanist.className} text-blue-900 font-bold text-lg`}>sales@techylla.com</p>
             </div>
 
             {/* PHONE */}
             <div className="flex items-start gap-4">
               <Phone className="text-orange-500 w-8 h-8 mt-1" />
 
-              <div className={`${manrope.className} text-blue-900 font-bold text-lg space-y-2`}>
+              <div className={`${urbanist.className} text-blue-900 font-bold text-lg space-y-2`}>
                 <p>USA: +1 (732) 208-4788</p>
                 <p>India: +91 98311 69927</p>
               </div>

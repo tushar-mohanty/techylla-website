@@ -279,7 +279,23 @@ export default function FloatingLines({
     const container = containerRef.current;
     if (!container) return;
 
+    // new line added
+
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+    });
+
+    observer.observe(container);
+
+    // 👇 Pause when tab inactive
+    const handleVisibilityChange = () => {
+      active = !document.hidden;
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     let active = true;
+    let isVisible = true; // new line added
 
     const scene = new Scene();
 
@@ -448,6 +464,12 @@ export default function FloatingLines({
     const renderLoop = () => {
       if (!active) return;
 
+      // 👇 Skip rendering if not visible
+      if (!isVisible) {
+        raf = requestAnimationFrame(renderLoop);
+        return;
+      }
+
       uniforms.iTime.value = clock.getElapsedTime();
 
       if (interactive) {
@@ -472,6 +494,10 @@ export default function FloatingLines({
       active = false;
 
       cancelAnimationFrame(raf);
+
+      // ✅ ADD THESE 2 LINES HERE
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
 
       if (ro) ro.disconnect();
 

@@ -8,6 +8,13 @@ const manrope = Manrope({
     weight: ["300", "400", "500", "600", "700", "800"]
 });
 
+import { Urbanist } from 'next/font/google'
+
+const urbanist = Urbanist({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+})
+
 export default function Footer() {
     return (
         <footer className="bg-black text-white px-10 min-h-screen">
@@ -16,8 +23,8 @@ export default function Footer() {
             <div className="grid md:grid-cols-2 gap-12">
 
                 {/* LEFT SIDE */}
-                <div className="mt-10 ml-0 md:mt-15 md:ml-15">
-                    <h2 className={`${manrope.className} text-7xl font-semibold tracking-tight leading-tight mb-10`}>
+                <div className="mt-10 ml-0 md:mt-15 md:ml-25">
+                    <h2 className={`${urbanist.className} text-7xl font-semibold tracking-tight leading-tight mb-10`}>
                         Think Data <br />
                         Think <span className="text-blue-400 font-semibold">Techylla</span>
                     </h2>
@@ -32,7 +39,7 @@ export default function Footer() {
                         />
                     </Link>
 
-                    <div className={`${manrope.className} grid grid-cols-2 gap-y-2 gap-x-4 md:gap-x-0 text-sm text-gray-200 mt-6 -mb-8 ml-2`}>
+                    <div className={`${urbanist.className} grid grid-cols-2 gap-y-2 gap-x-4 md:gap-x-0 text-sm text-gray-200 mt-6 -mb-8 ml-2`}>
 
                         {/* INDIA */}
                         <p className="font-semibold text-white">India Office:</p>
@@ -60,7 +67,7 @@ export default function Footer() {
                 </div>
 
                 {/* RIGHT SIDE */}
-                <div className={`${manrope.className} font-semibold text-white mb-3 flex flex-col gap-16 text-sm mt-10 ml-0 md:mt-20 md:-ml-18`}>
+                <div className={`${urbanist.className} font-semibold text-white mb-3 flex flex-col gap-16 text-sm mt-10 ml-0 md:mt-20 md:-ml-18`}>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
 
                         {/* Data & Cloud */}
@@ -68,7 +75,7 @@ export default function Footer() {
                             <h3 className="text-xl whitespace-nowrap text-orange-400 font-normal mb-4 -mt-0.5">Services & Solutions</h3>
 
                             <div className="space-y-4">
-                                <Link href="/gen-ai" className="text-l block font-normal text-orange-300 hover:text-orange-400 transition mt-5">
+                                <Link href="/services/data-cloud" className="text-l block font-normal text-orange-300 hover:text-orange-400 transition mt-5">
                                     Data & Cloud
                                 </Link>
 
@@ -101,7 +108,7 @@ export default function Footer() {
                             <div className="space-y-4">
                                 
 
-                                <Link href="/gen-ai" className="text-l font-normal block text-orange-300 hover:text-orange-400 transition mt-12">
+                                <Link href="/services/artificial-intelligence" className="text-l font-normal block text-orange-300 hover:text-orange-400 transition mt-12">
                                     Artificial Intelligence
                                 </Link>
 
@@ -194,9 +201,9 @@ export default function Footer() {
                 </div>
                 {/* BOTTOM */}
 
-                <div className="relative pt-6 flex flex-col justify-between text-sm text-gray-200 ml-0 md:ml-15 before:content-[''] before:absolute before:top-0 before:left-0 before:-translate-x-1.5 before:w-[300] md:before:w-[1320] before:border-t before:border-white/20">
+                <div className={`${urbanist.className} relative pt-6 flex flex-col justify-between text-sm text-gray-200 ml-0 md:ml-15 before:content-[''] before:absolute before:top-0 before:left-0 before:-translate-x-1.5 before:w-[300] md:before:w-[1320] before:border-t before:border-white/20`}>
 
-                    <p className="-mt-2">
+                    <p className="-mt-2 md:tracking-wide">
                         Copyright © 2026 Techylla. All rights reserved.
                     </p>
 

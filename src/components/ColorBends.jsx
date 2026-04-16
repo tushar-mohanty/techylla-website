@@ -123,6 +123,22 @@ export default function ColorBends({
 
   useEffect(() => {
     const container = containerRef.current;
+
+    let isVisible = true;
+    let isTabActive = !document.hidden;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+    });
+
+    observer.observe(container);
+
+    const handleVisibilityChange = () => {
+      isTabActive = !document.hidden;
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
@@ -191,6 +207,12 @@ export default function ColorBends({
     }
 
     const loop = () => {
+
+      if (!isVisible || !isTabActive) {
+        rafRef.current = requestAnimationFrame(loop);
+        return;
+      }
+
       const dt = clock.getDelta();
       const elapsed = clock.elapsedTime;
       material.uniforms.uTime.value = elapsed;
@@ -212,6 +234,9 @@ export default function ColorBends({
     rafRef.current = requestAnimationFrame(loop);
 
     return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
       if (resizeObserverRef.current) resizeObserverRef.current.disconnect();
       else window.removeEventListener('resize', handleResize);

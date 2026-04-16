@@ -114,7 +114,7 @@ void main(){
       hoverMat = rotY(ang.y) * rotX(ang.x);
     }
 
-    for (int i = 0; i < 44; ++i) {
+    for (int i = 0; i < 24; ++i) {
         vec3 P = marchT * dir;
         P.z -= 2.0;
         float rad = length(P);
@@ -276,7 +276,7 @@ const PrismaticBurst = ({
         uDistort: { value: 0 },
         uOffset: { value: [0, 0] },
         uGradient: { value: gradientTex },
-        uNoiseAmount: { value: 0.8 },
+        uNoiseAmount: { value: 0.1 },
         uRayCount: { value: 0 }
       }
     });

@@ -46,11 +46,11 @@ const BlurText = ({
   }, [threshold, rootMargin]);
 
   const defaultFrom = useMemo(() =>
-    direction === 'top' ? { filter: 'blur(10px)', opacity: 0, y: -50 } : { filter: 'blur(10px)', opacity: 0, y: 50 }, [direction]);
+    direction === 'top' ? { filter: 'blur(6px)', opacity: 0, y: -50 } : { filter: 'blur(6px)', opacity: 0, y: 50 }, [direction]);
 
   const defaultTo = useMemo(() => [
     {
-      filter: 'blur(5px)',
+      filter: 'blur(3px)',
       opacity: 0.5,
       y: direction === 'top' ? 5 : -5
     },
@@ -67,25 +67,40 @@ const BlurText = ({
     (_, i) => (stepCount === 1 ? 0 : i / (stepCount - 1))
   );
 
+  const baseTransition = useMemo(() => ({
+    duration: totalDuration,
+    times,
+    ease: easing
+  }), [totalDuration, times, easing]);
+
+  const animateKeyframes = useMemo(
+    () => buildKeyframes(fromSnapshot, toSnapshots),
+    [fromSnapshot, toSnapshots]
+  );
+
   return (
     <p ref={ref} className={`blur-text ${className} flex flex-wrap`}>
       {elements.map((segment, index) => {
-        const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
+        // const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
 
-        const spanTransition = {
-          duration: totalDuration,
-          times,
-          delay: (index * delay) / 1000
-        };
-        spanTransition.ease = easing;
+        // const spanTransition = {
+        //   duration: totalDuration,
+        //   times,
+        //   delay: (index * delay) / 1000
+        // };
+        // spanTransition.ease = easing;
 
         return (
           <motion.span
-            className="inline-block will-change-[transform,filter,opacity]"
+            className="inline-block will-change-transform"
+            style={{ transform: "translateZ(0)" }} // 👈 ADD THIS
             key={index}
             initial={fromSnapshot}
             animate={inView ? animateKeyframes : fromSnapshot}
-            transition={spanTransition}
+            transition={{
+              ...baseTransition,
+              delay: (index * delay) / 1000
+            }}
             onAnimationComplete={index === elements.length - 1 ? onAnimationComplete : undefined}>
             {segment === ' ' ? '\u00A0' : segment}
             {animateBy === 'words' && index < elements.length - 1 && '\u00A0'}

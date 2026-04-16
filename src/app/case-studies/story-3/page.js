@@ -7,6 +7,13 @@ const manrope = Manrope({
     weight: ["300", "400", "500", "600", "700", "800"]
 });
 
+import { Urbanist } from 'next/font/google'
+
+const urbanist = Urbanist({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+})
+
 
 export default function StoryThree() {
     return (
@@ -27,9 +34,9 @@ export default function StoryThree() {
                 transition={{ duration: 2, ease: "easeOut" }}
                 className="hidden md:block absolute right-10 top-33 w-[330] opacity-90"
             />
-            <div className="max-w-6xl mx-auto px-6 md:py-30 py-25 md:ml-4 ml-0 ">
+            <div className={`${urbanist.className} max-w-6xl mx-auto px-6 md:py-30 py-25 md:ml-4 ml-0 `}>
 
-                <h1 className={`${manrope.className} md:font-normal font-semibold text-black md:mb-8 mb-5 md:text-5xl text-2xl`}>
+                <h1 className={`${urbanist.className} md:font-normal font-semibold text-black md:mb-8 mb-5 md:text-5xl text-2xl`}>
                     Transforming Production with an AI-Powered Early Warning System
                 </h1>
 
@@ -49,7 +56,7 @@ export default function StoryThree() {
 
 
 
-                <h2 className={`${manrope.className} md:text-3xl text-xl mb-5 font-semibold`}>Business Need</h2>
+                <h2 className={`${urbanist.className} md:text-3xl text-xl mb-5 font-semibold`}>Business Need</h2>
 
 
                 <p className="md:text-lg text-sm text-gray-700 mb-8">
@@ -73,9 +80,9 @@ export default function StoryThree() {
 
                 {/* BUSINESS IMPACT - BELOW IMAGE */}
                 <div className="hidden md:block absolute right-5 top-110 w-[350] ">
-                    <h2 className={`${manrope.className} md:text-3xl text-xl mb-3 font-semibold mt-4`}>Business Impact</h2>
+                    <h2 className={`${urbanist.className} md:text-3xl text-xl mb-3 font-semibold mt-4`}>Business Impact</h2>
 
-                    <p className={`${manrope.className} md:text-lg text-sm text-gray-700 mb-8`}>
+                    <p className={`${urbanist.className} md:text-lg text-sm text-gray-700 mb-8`}>
                         <span className="w-4 h-3 text-black text-2xl mb-0.5 inline-block mr-3">▸</span>
                         Unified shop floor visibility
                         <br />
@@ -92,11 +99,11 @@ export default function StoryThree() {
                 </div>
 
                 <div className="md:hidden mb-6 ">
-                    <h2 className={`${manrope.className} text-xl mb-3 font-semibold`}>
+                    <h2 className={`${urbanist.className} text-xl mb-3 font-semibold`}>
                         Business Impact
                     </h2>
 
-                    <p className={`${manrope.className} text-sm font-semibold text-gray-900 `}>
+                    <p className={`${urbanist.className} text-sm font-semibold text-gray-900 `}>
                         <span className="w-4 h-3 text-black text-2xl mb-0.5 inline-block mr-3">▸</span>
                         Unified shop floor visibility
                         <br />
@@ -117,9 +124,9 @@ export default function StoryThree() {
 
 
 
-                <h2 className={`${manrope.className} md:text-3xl text-xl mb-3 font-semibold mt-9`}>Solution</h2>
+                <h2 className={`${urbanist.className} md:text-3xl text-xl mb-3 font-semibold mt-9`}>Solution</h2>
 
-                <p className={`${manrope.className} md:text-lg text-sm text-gray-700 mb-8`}>
+                <p className={`${urbanist.className} md:text-lg text-sm text-gray-700 mb-8`}>
                     The Techylla team developed a <span className="text-gray-900 font-semibold"> Manufacturing Cockpit & AI-Powered Early Warning System </span> and implemented the following key initiatives:
                     <br />
                     <br />
