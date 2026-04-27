@@ -60,51 +60,51 @@ const leaders = [
         role: "Software Engineer",
         showReadMore: false,
     },
-    {
-        name: "Leader Five",
-        image: "/leader5.jpg",
-        title: "Scaling Global Engineering Teams",
-        description:
-            "Global engineering teams are reshaping how companies deliver technology solutions at scale.",
-        link: "/thought-leadership/leader-five",
-        showReadMore: false,
-    },
-    {
-        name: "Leader Six",
-        image: "/leader6.jpg",
-        title: "Next Generation AI Platforms",
-        description:
-            "Next generation AI platforms are redefining automation and business intelligence.",
-        link: "/thought-leadership/leader-six",
-        showReadMore: false,
-    },
-    {
-        name: "Leader Seven",
-        image: "/leader7.jpg",
-        title: "Digital Supply Chain Evolution",
-        description:
-            "Digital transformation is enabling smarter and more resilient supply chains.",
-        link: "/thought-leadership/leader-seven",
-        showReadMore: false,
-    },
-    {
-        name: "Leader Eight",
-        image: "/leader8.jpg",
-        title: "Future of Data Engineering",
-        description:
-            "Data engineering is becoming a core pillar for modern AI-driven organizations.",
-        link: "/thought-leadership/leader-eight",
-        showReadMore: false,
-    },
-    {
-        name: "Leader Nine",
-        image: "/leader9.jpg",
-        title: "Product Innovation with AI",
-        description:
-            "AI-driven product innovation is unlocking new opportunities for enterprises.",
-        link: "/thought-leadership/leader-nine",
-        showReadMore: false,
-    },
+    // {
+    //     name: "Leader Five",
+    //     image: "/leader5.jpg",
+    //     title: "Scaling Global Engineering Teams",
+    //     description:
+    //         "Global engineering teams are reshaping how companies deliver technology solutions at scale.",
+    //     link: "/thought-leadership/leader-five",
+    //     showReadMore: false,
+    // },
+    // {
+    //     name: "Leader Six",
+    //     image: "/leader6.jpg",
+    //     title: "Next Generation AI Platforms",
+    //     description:
+    //         "Next generation AI platforms are redefining automation and business intelligence.",
+    //     link: "/thought-leadership/leader-six",
+    //     showReadMore: false,
+    // },
+    // {
+    //     name: "Leader Seven",
+    //     image: "/leader7.jpg",
+    //     title: "Digital Supply Chain Evolution",
+    //     description:
+    //         "Digital transformation is enabling smarter and more resilient supply chains.",
+    //     link: "/thought-leadership/leader-seven",
+    //     showReadMore: false,
+    // },
+    // {
+    //     name: "Leader Eight",
+    //     image: "/leader8.jpg",
+    //     title: "Future of Data Engineering",
+    //     description:
+    //         "Data engineering is becoming a core pillar for modern AI-driven organizations.",
+    //     link: "/thought-leadership/leader-eight",
+    //     showReadMore: false,
+    // },
+    // {
+    //     name: "Leader Nine",
+    //     image: "/leader9.jpg",
+    //     title: "Product Innovation with AI",
+    //     description:
+    //         "AI-driven product innovation is unlocking new opportunities for enterprises.",
+    //     link: "/thought-leadership/leader-nine",
+    //     showReadMore: false,
+    // },
 ];
 
 const ThoughtLeadership = () => {
