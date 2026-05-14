@@ -32,6 +32,16 @@ const leaders = [
         showReadMore: true,
     },
     {
+        name: "Subhasmita Dasgupta",
+        image: "/Subhasmita-Dasgupta.png",
+        title: "Why do many transformation initiatives struggle to deliver real business impact?",
+        description:
+            "Because success depends not just on technology, but on strong execution and strategic delivery. \n\n As a Sr. Delivery Manager, he focuses on driving efficient, scalable, and business-focused transformation initiatives through strong leadership, operational excellence, and data-driven execution.",
+        link: "/thought-leadership/leader-three",
+        role: "Sr. Delivery Manager",
+        showReadMore: false,
+    },
+    {
         name: "Bireshwar Das",
         image: "/Bireshwar-Das.png",
         title: "Why do organizations still struggle to get real insights from their supply chain data?",
